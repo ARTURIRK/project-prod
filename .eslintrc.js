@@ -37,6 +37,7 @@ module.exports = {
         'react/react-in-jsx-scope': 'off',
         'react/jsx-props-no-spreading': 'warn',
         'no-param-reassign': 'off',
+        'linebreak-style':'off',
         'react/function-component-definition': 'off',
         'no-shadow': 'off',
         'import/extensions': 'off',

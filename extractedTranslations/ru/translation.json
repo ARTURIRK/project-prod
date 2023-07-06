@@ -1,9 +1,11 @@
 {
+  "": "",
   "Lorem ipsum dolor sit amet, consectetur adipisicing elit": {
     " Aliquid commodi consequatur eligendi impedit incidunt necessitatibus possimus quis saepe sunt totam": {
       "": ""
     }
   },
+  "PROFILE PAGE": "PROFILE PAGE",
   "decrement": "decrement",
   "increment": "increment",
   "throw error": "throw error",
@@ -21,5 +23,6 @@
   "Произошла непредвиденная ошибка": "Произошла непредвиденная ошибка",
   "Страница не найдена": "Страница не найдена",
   "Форма авторизации": "Форма авторизации",
-  "Язык": "Язык"
+  "Язык": "Язык",
+  "страница профиля": "страница профиля"
 }

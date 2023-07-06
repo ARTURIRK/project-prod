@@ -1,5 +1,6 @@
 import { CounterSchema } from 'entities/Counter';
 import { UserSchema } from 'entities/User';
+import { ProfileSchema } from 'entities/Profile';
 import { LoginSchema } from 'features/AuthByUsername';
 import {
     AnyAction, EnhancedStore, Reducer, ReducersMapObject,
@@ -9,7 +10,7 @@ import { CombinedState } from 'redux';
 export interface StateSchema {
     counter: CounterSchema;
     user: UserSchema;
-
+    profile?: ProfileSchema;
     // Асинхронные редюсеры
     loginForm?: LoginSchema;
 }

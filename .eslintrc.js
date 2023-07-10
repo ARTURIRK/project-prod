@@ -39,6 +39,7 @@ module.exports = {
         'react/jsx-props-no-spreading': 'off',
         'no-param-reassign': 'off',
         'linebreak-style': 'off',
+        'no-undef': 'off',
         'react/function-component-definition': 'off',
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'error',
@@ -59,7 +60,7 @@ module.exports = {
     },
     globals: {
         __IS_DEV__: true,
-        __IS_API__: '',
+        __IS_API__: 'readonly',
     },
     overrides: [
         {

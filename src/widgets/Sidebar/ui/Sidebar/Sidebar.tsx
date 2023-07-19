@@ -35,7 +35,13 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
             </Button>
             <div className={cls.items}>
                 {
-                    SidebarItemsList.map((el) => <SidebarItem key={el.path} item={el} collapsed={collapsed} />)
+                    SidebarItemsList.map((el) => (
+                        <SidebarItem
+                            key={el.path}
+                            item={el}
+                            collapsed={collapsed}
+                        />
+                    ))
                 }
             </div>
             <div className={cls.switchers}>

@@ -1,3 +1,11 @@
 {
-  "Страница профиля": "Profile page"
+  "Страница профиля": "Profile page",
+  "Ваше имя": "Your first name",
+  "Ваша фамилия": "Your second name",
+  "Ваш возраст": "Your age",
+  "Ваш город": "Your city",
+  "Имя пользователя": "User name",
+  "Введите ссылку на аватар": "Input avatar link",
+  "Укажите валюту": "specify the currency",
+  "Укажите страну": "specify the country"
 }

@@ -20,5 +20,7 @@
   "Форма авторизации": "Auth form",
   "Вы ввели неверный логин или пароль": "Uncorrect username or password",
   "Выйти": "Выйти",
-  "Профиль":"Profile"
+  "Профиль":"Profile",
+  "Произошла ошибка при загрузке": "Error happens while loading",
+  "Попробуйте обновить страницу": "Try to reload page"
 }

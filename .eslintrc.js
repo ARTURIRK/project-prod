@@ -60,7 +60,8 @@ module.exports = {
     },
     globals: {
         __IS_DEV__: true,
-        __IS_API__: 'readonly',
+        __IS_API__: true,
+        __PROJECT__: true,
     },
     overrides: [
         {

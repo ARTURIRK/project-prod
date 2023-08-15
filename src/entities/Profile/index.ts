@@ -1,6 +1,7 @@
-export type {
+export {
     ProfileSchema,
     Profile,
+    ValidateProfileError,
 } from './models/types/profile';
 
 export {
@@ -12,6 +13,6 @@ export { fetchProfileData } from './models/servives/fetchProfileData/fetchProfil
 
 export { ProfileCard } from './ui/ProfileCard/ProfileCard';
 
-export { getProfileInfo } from './models/selectors/getProfileInfo/getProfileInfo';
+export { getProfileInfo } from './models/selectors/getProfileInfo';
 
 export { updateProfileData } from './models/servives/updateProfileData/updateProfileData';

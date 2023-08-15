@@ -1,13 +1,15 @@
 import { Country } from 'entities/Country';
 import { Currency } from 'entities/Currency';
 import {
-    fetchProfileData, ProfileCard, profileReducer, getProfileInfo, profileActions,
+    fetchProfileData, ProfileCard, profileReducer, getProfileInfo, profileActions, ValidateProfileError,
 } from 'entities/Profile';
 import { useCallback, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
+import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
 interface Props {
@@ -16,11 +18,22 @@ interface Props {
 const reducers: ReducersList = {
     profile: profileReducer,
 };
+
 export default function ProfilePage({ className }: Props) {
     const dispatch = useAppDispatch();
+    const { t } = useTranslation('profile');
     const profile = useSelector(getProfileInfo);
+    const validateErrorTranslations = {
+        [ValidateProfileError.INCORRECT_USER_DATA]: t('Не указаны имя или фамилия'),
+        [ValidateProfileError.SERVER_ERROR]: t('Ошбика серера'),
+        [ValidateProfileError.INCORRECT_AGE]: t('Некорректно указан возраст'),
+        [ValidateProfileError.INCORRECT_COUNTRY]: t('Некорректно указана страна'),
+        [ValidateProfileError.NO_DATA]: t('Данные не указаны'),
+    };
     useEffect(() => {
-        dispatch(fetchProfileData());
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(fetchProfileData());
+        }
     }, [dispatch]);
 
     const onChangeFirstName = useCallback((value?: string) => {
@@ -53,6 +66,16 @@ export default function ProfilePage({ className }: Props) {
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
             <div className={classNames('', {}, [className])}>
                 <ProfilePageHeader readonly={profile?.readonly} />
+                {
+                    profile?.validateError?.length
+                    && profile.validateError.map((el) => (
+                        <Text
+                            key={el}
+                            theme={TextTheme.ERROR}
+                            text={validateErrorTranslations[el]}
+                        />
+                    ))
+                }
                 <ProfileCard
                     isLoading={profile?.isLoading}
                     error={profile?.error}

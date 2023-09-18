@@ -5,15 +5,15 @@ import { NotFoundPage } from 'pages/NotFoundPage';
 import { ProfilePage } from 'pages/ProfilePage';
 
 export enum AppRoutes {
-    MAIN = 'main',
-    ABOUT = 'about',
-    PROFILE = 'profile',
-    NOT_FOUND = 'not_found',
+  MAIN = 'main',
+  ABOUT = 'about',
+  PROFILE = 'profile',
+  NOT_FOUND = 'not_found',
 }
 
-type AppRouteProps = RouteProps & {
-    authOnly?: boolean;
-}
+export type AppRouteProps = RouteProps & {
+  authOnly?: boolean;
+};
 
 export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.MAIN]: '/',

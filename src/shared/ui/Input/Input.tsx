@@ -4,14 +4,14 @@ import React, {
 } from 'react';
 import cls from './Input.module.scss';
 
-type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readonly'>
+type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readonly'>;
 
 interface InputProps extends HTMLInputProps {
-    onChange?: (value: string) => void;
-    autofocus?: boolean;
-    className?: string;
-    readonly?: boolean;
-    value?: string | number;
+  onChange?: (value: string) => void;
+  autofocus?: boolean;
+  className?: string;
+  readonly?: boolean;
+  value?: string | number;
 }
 
 export const Input = memo((props: InputProps) => {
@@ -56,7 +56,7 @@ export const Input = memo((props: InputProps) => {
                     {`${placeholder}: `}
                 </div>
             )}
-            <div>
+            <div className={cls.inputBox}>
                 <input
                     ref={ref}
                     type={type}

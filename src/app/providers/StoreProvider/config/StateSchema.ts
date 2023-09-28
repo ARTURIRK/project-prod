@@ -1,13 +1,14 @@
-import { UserSchema } from 'entities/User';
-import { ProfileSchema } from 'entities/Profile';
-import { LoginSchema } from 'features/AuthByUsername';
+import { NavigateOptions, To } from 'react-router-dom';
+import { AxiosInstance } from 'axios';
+import { CombinedState } from 'redux';
 import {
     AnyAction, EnhancedStore, Reducer, ReducersMapObject,
 } from '@reduxjs/toolkit';
-import { CombinedState } from 'redux';
-import { AxiosInstance } from 'axios';
-import { NavigateOptions, To } from 'react-router-dom';
-import { ArticleDetailsSchema } from 'entities/Article';
+import type { UserSchema } from 'entities/User';
+import type { ProfileSchema } from 'entities/Profile';
+import type { LoginSchema } from 'features/AuthByUsername';
+import type { ArticleDetailsSchema } from 'entities/Article';
+import type { ArticleDetailsCommentsSchema } from 'pages/ArticleDetailsPage';
 
 export interface StateSchema {
     user: UserSchema;
@@ -15,6 +16,7 @@ export interface StateSchema {
     // Асинхронные редюсеры
     loginForm?: LoginSchema;
     articleDetails?: ArticleDetailsSchema;
+    articleDetailsComments?: ArticleDetailsCommentsSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

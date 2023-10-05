@@ -12,17 +12,37 @@ interface Props {
  isLoading?: boolean;
 }
 
-export const CommentList = memo(({ className, comments, isLoading }: Props) => (
-    <div className={classNames(cls.CommentList, {}, [className])}>
-        {comments?.length
-            ? comments.map((comment) => (
+export const CommentList = memo(({ className, comments, isLoading }: Props) => {
+    if (isLoading) {
+        return (
+            <div className={classNames(cls.CommentList, {}, [className])}>
                 <CommentCard
-                    key={comment.id}
                     isLoading={isLoading}
                     className={cls.comment}
-                    comment={comment}
                 />
-            ))
-            : <Text title={t('Комментариев нет')} /> }
-    </div>
-));
+                <CommentCard
+                    isLoading={isLoading}
+                    className={cls.comment}
+                />
+                <CommentCard
+                    isLoading={isLoading}
+                    className={cls.comment}
+                />
+            </div>
+        );
+    }
+    return (
+        <div className={classNames(cls.CommentList, {}, [className])}>
+            {comments?.length
+                ? comments.map((comment) => (
+                    <CommentCard
+                        key={comment.id}
+                        isLoading={isLoading}
+                        className={cls.comment}
+                        comment={comment}
+                    />
+                ))
+                : <Text title={t('Комментариев нет')} /> }
+        </div>
+    );
+});

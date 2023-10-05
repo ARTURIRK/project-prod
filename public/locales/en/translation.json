@@ -20,8 +20,10 @@
   "Введите пароль": "Enter password",
   "Форма авторизации": "Auth form",
   "Вы ввели неверный логин или пароль": "Uncorrect username or password",
-  "Выйти": "Выйти",
+  "Выйти": "Quit",
+  "Отправить":"Send",
   "Профиль":"Profile",
+  "Введите текст комментария": "Input comment text",
   "Произошла ошибка при загрузке": "Error happens while loading",
   "Попробуйте обновить страницу": "Try to reload page"
 }

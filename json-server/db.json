@@ -102,6 +102,18 @@
       "text": "some comment 3",
       "articleId": "1",
       "userId": "1"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "Комментарий",
+      "id": "8cr1wnc"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "Коммент епта!",
+      "id": "1NqLtiN"
     }
   ],
   "users": [
@@ -120,14 +132,28 @@
       "avatar": "https://w.forfun.com/fetch/b4/b48a66b3c4ea0107be482a87f1e50fb8.jpeg"
     }
   ],
-  "profile": {
-    "firstName": "Арцах",
-    "lastName": "Цветоевидзе",
-    "age": 40,
-    "currency": "USD",
-    "country": "Belorussia",
-    "city": "Moscow-city",
-    "username": "ОДМЭН",
-    "avatar": "https://w.forfun.com/fetch/b4/b48a66b3c4ea0107be482a87f1e50fb8.jpeg"
-  }
+  "profile": [
+    {
+      "id": "1",
+      "firstName": "Арцах",
+      "lastName": "Цветаев",
+      "age": 40,
+      "currency": "USD",
+      "country": "Belorussia",
+      "city": "Moscow-city",
+      "username": "ОДМЭН",
+      "avatar": "https://w.forfun.com/fetch/b4/b48a66b3c4ea0107be482a87f1e50fb8.jpeg"
+    },
+    {
+      "id": "2",
+      "firstName": "Антон",
+      "lastName": "Горячев",
+      "age": 230,
+      "currency": "RUS",
+      "country": "Belorussia",
+      "city": "Moscow",
+      "username": "ЮЗЕР",
+      "avatar": "https://s0.rbk.ru/v6_top_pics/media/img/7/19/756752350085197.webp"
+    }
+  ]
 }

@@ -4,11 +4,12 @@ import { CombinedState } from 'redux';
 import {
     AnyAction, EnhancedStore, Reducer, ReducersMapObject,
 } from '@reduxjs/toolkit';
+import type { ArticleDetailsCommentsSchema } from 'pages/ArticleDetailsPage';
 import type { UserSchema } from 'entities/User';
 import type { ProfileSchema } from 'entities/Profile';
-import type { LoginSchema } from 'features/AuthByUsername';
 import type { ArticleDetailsSchema } from 'entities/Article';
-import type { ArticleDetailsCommentsSchema } from 'pages/ArticleDetailsPage';
+import type { LoginSchema } from 'features/AuthByUsername';
+import { AddCommentFormSchema } from 'features/addCommentForm';
 
 export interface StateSchema {
     user: UserSchema;
@@ -17,6 +18,7 @@ export interface StateSchema {
     loginForm?: LoginSchema;
     articleDetails?: ArticleDetailsSchema;
     articleDetailsComments?: ArticleDetailsCommentsSchema;
+    addCommentForm?: AddCommentFormSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

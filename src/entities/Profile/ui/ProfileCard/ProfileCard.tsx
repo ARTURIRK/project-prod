@@ -5,41 +5,27 @@ import { AlignText, Text, TextTheme } from 'shared/ui/Text/Text';
 import { Input } from 'shared/ui/Input/Input';
 import { Loader } from 'shared/ui/Loader/Loader';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
-import { Currency, CurrencySelect } from 'entities/Currency';
-import { Country, CountrySelect } from 'entities/Country';
+import { CurrencySelect } from 'entities/Currency';
+import { CountrySelect } from 'entities/Country';
 import { memo } from 'react';
 import cls from './ProfileCard.module.scss';
 
 interface Props {
+    onChangeProfileInfo: (key: keyof Profile, value: Profile[keyof Profile]) => void;
     isLoading?: boolean;
     className?: string;
     error?: string;
     data?: Profile;
     readonly?: boolean;
-    onChangeLastName?: (value?: string) => void;
-    onChangeFirstName?: (value?: string) => void;
-    onChangeCity?: (value?: string) => void;
-    onChangeAge?: (value?: string) => void;
-    onChangeUsername?: (value?: string) => void;
-    onChangeAvatar?: (value?: string) => void;
-    onChangeCurrency?: (value: Currency) => void;
-    onChangeCountry?: (value: Country) => void;
 }
 
 export const ProfileCard = memo(({
+    onChangeProfileInfo,
     className,
     data,
     isLoading,
     error,
     readonly,
-    onChangeLastName,
-    onChangeUsername,
-    onChangeAvatar,
-    onChangeFirstName,
-    onChangeCity,
-    onChangeAge,
-    onChangeCurrency,
-    onChangeCountry,
 }: Props) => {
     const { t } = useTranslation();
     if (isLoading) {
@@ -80,53 +66,53 @@ export const ProfileCard = memo(({
                     className={cls.input}
                     value={data?.firstName}
                     placeholder={t('Ваше имя')}
-                    onChange={onChangeFirstName}
+                    onChange={(value) => onChangeProfileInfo('firstName', value)}
                 />
                 <Input
                     readonly={readonly}
                     className={cls.input}
                     value={data?.lastName}
                     placeholder={t('Ваша фамилия')}
-                    onChange={onChangeLastName}
+                    onChange={(value) => onChangeProfileInfo('lastName', value)}
                 />
                 <Input
                     readonly={readonly}
                     className={cls.input}
                     value={data?.age}
                     placeholder={t('Ваш возраст')}
-                    onChange={onChangeAge}
+                    onChange={(value) => onChangeProfileInfo('age', value)}
                 />
                 <Input
                     readonly={readonly}
                     className={cls.input}
                     value={data?.city}
                     placeholder={t('Ваш город')}
-                    onChange={onChangeCity}
+                    onChange={(value) => onChangeProfileInfo('city', value)}
                 />
                 <Input
                     readonly={readonly}
                     className={cls.input}
                     value={data?.username}
                     placeholder={t('Имя пользователя')}
-                    onChange={onChangeUsername}
+                    onChange={(value) => onChangeProfileInfo('username', value)}
                 />
                 <Input
                     readonly={readonly}
                     className={cls.input}
                     value={data?.avatar}
                     placeholder={t('Введите ссылку на аватар')}
-                    onChange={onChangeAvatar}
+                    onChange={(value) => onChangeProfileInfo('avatar', value)}
                 />
                 <CurrencySelect
                     className={cls.input}
                     value={data?.currency}
-                    onChange={onChangeCurrency}
+                    onChange={(value) => onChangeProfileInfo('currency', value)}
                     readonly={readonly}
                 />
                 <CountrySelect
                     className={cls.input}
                     value={data?.country}
-                    onChange={onChangeCountry}
+                    onChange={(value) => onChangeProfileInfo('country', value)}
                     readonly={readonly}
                 />
             </div>

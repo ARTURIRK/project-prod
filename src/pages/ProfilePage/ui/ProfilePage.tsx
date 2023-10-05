@@ -1,8 +1,6 @@
 import { useCallback } from 'react';
-import { Country } from 'entities/Country';
-import { Currency } from 'entities/Currency';
 import {
-    fetchProfileData, ProfileCard, profileReducer, getProfileInfo, profileActions, ValidateProfileError,
+    fetchProfileData, ProfileCard, profileReducer, getProfileInfo, profileActions, ValidateProfileError, Profile,
 } from 'entities/Profile';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -36,31 +34,13 @@ export default function ProfilePage({ className }: Props) {
     useInitialEffect(() => {
         if (id) { dispatch(fetchProfileData(id)); }
     });
-
-    const onChangeFirstName = useCallback((value?: string) => {
-        dispatch(profileActions.updateProfile({ firstName: value || '' }));
-    }, [dispatch]);
-    const onChangeLastName = useCallback((value?: string) => {
-        dispatch(profileActions.updateProfile({ lastName: value || '' }));
-    }, [dispatch]);
-    const onChangeCity = useCallback((value?: string) => {
-        dispatch(profileActions.updateProfile({ city: value || '' }));
-    }, [dispatch]);
-    const onChangeAvatar = useCallback((value?: string) => {
-        dispatch(profileActions.updateProfile({ avatar: value || '' }));
-    }, [dispatch]);
-    const onChangeUsername = useCallback((value?: string) => {
-        dispatch(profileActions.updateProfile({ username: value || '' }));
-    }, [dispatch]);
-    const onChangeAge = useCallback((value?: string) => {
-        const newValue = value?.replace(/\D+/, '');
-        dispatch(profileActions.updateProfile({ age: Number(newValue) || 0 }));
-    }, [dispatch]);
-    const onChangeCurrency = useCallback((value: Currency) => {
-        dispatch(profileActions.updateProfile({ currency: value }));
-    }, [dispatch]);
-    const onChangeCountry = useCallback((value: Country) => {
-        dispatch(profileActions.updateProfile({ country: value }));
+    const onChangeProfileInfo = useCallback((key: keyof Profile, value: Profile[keyof Profile]) => {
+        if (key === 'age') {
+            const newValue = (value as string)?.replace(/\D+/, '');
+            dispatch(profileActions.updateProfile({ age: Number(newValue) || 0 }));
+        } else {
+            dispatch(profileActions.updateProfile({ [key]: value || '' }));
+        }
     }, [dispatch]);
 
     return (
@@ -78,18 +58,11 @@ export default function ProfilePage({ className }: Props) {
                     ))
                 }
                 <ProfileCard
+                    onChangeProfileInfo={onChangeProfileInfo}
                     isLoading={profile?.isLoading}
+                    readonly={profile?.readonly}
                     error={profile?.error}
                     data={profile?.form}
-                    onChangeFirstName={onChangeFirstName}
-                    onChangeLastName={onChangeLastName}
-                    onChangeCurrency={onChangeCurrency}
-                    onChangeCity={onChangeCity}
-                    onChangeAge={onChangeAge}
-                    onChangeAvatar={onChangeAvatar}
-                    onChangeCountry={onChangeCountry}
-                    onChangeUsername={onChangeUsername}
-                    readonly={profile?.readonly}
                 />
             </div>
         </DynamicModuleLoader>

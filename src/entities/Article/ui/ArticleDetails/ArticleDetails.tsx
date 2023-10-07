@@ -15,7 +15,7 @@ import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { ArticleBlock, ArticleBlockType } from '../../model/types/article';
 import { getArticleDetailsData, getArticleDetailsError, getArticleDetailsIsLoading } from
     '../../model/selectors/articleDetails';
-import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
+import { articleDetailsReducer } from '../../model/slices/articleDetailsSlice';
 import cls from './ArticleDetails.module.scss';
 import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';

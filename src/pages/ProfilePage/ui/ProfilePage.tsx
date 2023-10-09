@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { Page } from 'shared/ui/Page/Page';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
@@ -45,7 +46,7 @@ export default function ProfilePage({ className }: Props) {
 
     return (
         <DynamicModuleLoader reducers={reducers}>
-            <div className={classNames('', {}, [className])}>
+            <Page className={classNames('', {}, [className])}>
                 <ProfilePageHeader readonly={profile?.readonly} />
                 {
                     profile?.validateError?.length
@@ -64,7 +65,7 @@ export default function ProfilePage({ className }: Props) {
                     error={profile?.error}
                     data={profile?.form}
                 />
-            </div>
+            </Page>
         </DynamicModuleLoader>
     );
 }

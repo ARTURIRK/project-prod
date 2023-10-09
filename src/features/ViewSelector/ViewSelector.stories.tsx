@@ -1,17 +1,17 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { ArticleViewSelector } from './ViewSelector';
+import { ViewSelector } from './ViewSelector';
 
 export default {
-    title: 'shared/ArticleViewSelector',
-    component: ArticleViewSelector,
+    title: 'features/ViewSelector',
+    component: ViewSelector,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as ComponentMeta<typeof ArticleViewSelector>;
+} as ComponentMeta<typeof ViewSelector>;
 
-const Template: ComponentStory<typeof ArticleViewSelector> = (args) => <ArticleViewSelector {...args} />;
+const Template: ComponentStory<typeof ViewSelector> = (args) => <ViewSelector {...args} />;
 
 export const Normal = Template.bind({});
 Normal.args = {};

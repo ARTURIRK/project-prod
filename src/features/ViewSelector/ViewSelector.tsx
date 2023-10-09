@@ -32,9 +32,10 @@ export const ViewSelector = memo((props: Props) => {
     };
 
     return (
-        <div className={classNames(cls.ArticleViewSelector, {}, [className])}>
+        <div className={classNames(cls.ViewSelector, {}, [className])}>
             {viewTypes.map((viewType) => (
                 <Button
+                    key={viewType.view}
                     theme={ButtonTheme.CLEAR}
                     onClick={onClick(viewType.view)}
                 >

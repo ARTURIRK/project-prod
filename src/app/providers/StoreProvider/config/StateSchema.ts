@@ -4,16 +4,18 @@ import {
     AnyAction, EnhancedStore, Reducer, ReducersMapObject,
 } from '@reduxjs/toolkit';
 import type { ArticleDetailsCommentsSchema } from 'pages/ArticleDetailsPage';
+import { ArticlesPageSchema } from 'pages/ArticlesPage';
 import type { UserSchema } from 'entities/User';
 import type { ProfileSchema } from 'entities/Profile';
 import type { ArticleDetailsSchema } from 'entities/Article';
 import type { LoginSchema } from 'features/AuthByUsername';
 import { AddCommentFormSchema } from 'features/addCommentForm';
-import { ArticlesPageSchema } from 'pages/ArticlesPage';
+import { ScrollSaverSchema } from 'features/ScrollSaver';
 
 export interface StateSchema {
     user: UserSchema;
     profile?: ProfileSchema;
+    scrollSaver: ScrollSaverSchema;
     // Асинхронные редюсеры
     loginForm?: LoginSchema;
     articleDetails?: ArticleDetailsSchema;

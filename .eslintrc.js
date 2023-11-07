@@ -35,6 +35,7 @@ module.exports = {
         'import/prefer-default-export': 'off',
         'no-unused-vars': ['warn', { args: 'none' }],
         'react/require-default-props': 'off',
+        'react/jsx-no-bind': 'off',
         'react/react-in-jsx-scope': 'off',
         'react/jsx-props-no-spreading': 'off',
         'no-param-reassign': 'off',

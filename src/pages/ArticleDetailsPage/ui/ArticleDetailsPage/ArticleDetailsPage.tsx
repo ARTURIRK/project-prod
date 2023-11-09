@@ -1,5 +1,5 @@
 import { memo, useCallback } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { ArticleDetails, ArticleList } from 'entities/Article';
@@ -10,8 +10,6 @@ import { Text, TextSize } from 'shared/ui/Text/Text';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { Page } from 'widgets/Page/Page';
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import {
     fetchRecommendationsForArtilce,
 } from '../../model/services/fetchRecommendationsForArtilce/fetchRecommendationsForArtilce';
@@ -27,6 +25,7 @@ import {
 import { getArticleRecommendationsIsLoading } from '../../model/selectors/recommendations';
 import cls from './ArticleDetailsPage.module.scss';
 import { articleDetailsPageReducer } from '../../model/slices';
+import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 
 interface Props {
  className?: string;
@@ -37,14 +36,10 @@ const reducers: ReducersList = {
 const ArticleDetailsPage = (({ className }: Props) => {
     const { t } = useTranslation('article');
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const { id } = useParams<{id: string}>();
     const comments = useSelector(getArticleComments.selectAll);
     const recommnedations = useSelector(getArticleRecommendations.selectAll);
     const recommnedationsIsLoading = useSelector(getArticleRecommendationsIsLoading);
-    const onBackToList = () => {
-        navigate(RoutePath.articles);
-    };
     const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
     const onSendComment = useCallback((text: string) => {
         dispatch(addCommentForArticle(text));
@@ -64,9 +59,7 @@ const ArticleDetailsPage = (({ className }: Props) => {
     return (
         <DynamicModuleLoader reducers={reducers}>
             <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-                <Button theme={ButtonTheme.OUTLINE} onClick={onBackToList}>
-                    {t('Назад к списку')}
-                </Button>
+                <ArticleDetailsPageHeader />
                 <ArticleDetails id={id} />
                 <Text
                     size={TextSize.L}

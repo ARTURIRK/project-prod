@@ -2,8 +2,11 @@ import axios from 'axios';
 import { USER_LOCALSTORAGE_KEY } from 'shared/const/localstorage';
 
 export const $api = axios.create({
-    baseURL: 'http://localhost:8000',
-    headers: {
-        authorization: localStorage.getItem(USER_LOCALSTORAGE_KEY) || '',
-    },
+    baseURL: __IS_API__,
+});
+$api.interceptors.request.use((config) => {
+    if (config.headers) {
+        config.headers.authorization = localStorage.getItem(USER_LOCALSTORAGE_KEY) || '';
+    }
+    return config;
 });

@@ -22,6 +22,7 @@ module.exports = {
         '@typescript-eslint',
         'i18next',
         'react-hooks',
+        'relative-path-arturts',
     ],
     rules: {
         'react/jsx-indent': [2, 4],
@@ -51,6 +52,7 @@ module.exports = {
         'import/no-extraneous-dependencies': 'off',
         'no-underscore-dangle': 'off',
         'react/no-array-index-key': 'off',
+        'relative-path-arturts/path-checker': 'error',
         'i18next/no-literal-string': [
             'error',
             {

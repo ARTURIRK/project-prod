@@ -10,6 +10,7 @@ import { Text, TextSize } from 'shared/ui/Text/Text';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { Page } from 'widgets/Page/Page';
+import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import {
     fetchRecommendationsForArtilce,
 } from '../../model/services/fetchRecommendationsForArtilce/fetchRecommendationsForArtilce';
@@ -25,7 +26,6 @@ import {
 import { getArticleRecommendationsIsLoading } from '../../model/selectors/recommendations';
 import cls from './ArticleDetailsPage.module.scss';
 import { articleDetailsPageReducer } from '../../model/slices';
-import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 
 interface Props {
  className?: string;

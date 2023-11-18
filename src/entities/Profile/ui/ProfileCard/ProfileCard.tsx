@@ -1,13 +1,13 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Profile } from 'entities/Profile/models/types/profile';
+import { CurrencySelect } from 'entities/Currency';
+import { CountrySelect } from 'entities/Country';
+import { classNames } from 'shared/lib/classNames/classNames';
 import { AlignText, Text, TextTheme } from 'shared/ui/Text/Text';
 import { Input } from 'shared/ui/Input/Input';
 import { Loader } from 'shared/ui/Loader/Loader';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
-import { CurrencySelect } from 'entities/Currency';
-import { CountrySelect } from 'entities/Country';
-import { memo } from 'react';
+import { Profile } from '../../models/types/profile';
 import cls from './ProfileCard.module.scss';
 
 interface Props {

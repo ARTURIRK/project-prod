@@ -38,9 +38,9 @@ export const Page = ({
         wrapperRef.current.scrollTop = scrollPosition;
     });
     return (
-        <section onScroll={onScrollHandler} ref={wrapperRef} className={classNames(cls.Page, {}, [className])}>
+        <main onScroll={onScrollHandler} ref={wrapperRef} className={classNames(cls.Page, {}, [className])}>
             {children}
             {onScrollEnd ? <div className={cls.trigger} ref={triggerRef} /> : null}
-        </section>
+        </main>
     );
 };

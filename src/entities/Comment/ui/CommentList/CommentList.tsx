@@ -2,8 +2,8 @@ import { t } from 'i18next';
 import { memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text } from 'shared/ui/Text/Text';
+import { VStack } from 'shared/ui/Stack';
 import { CommentCard } from '../CommentCard/CommentCard';
-import cls from './CommentList.module.scss';
 import type { IComment } from '../../model/types/comment';
 
 interface Props {
@@ -15,34 +15,30 @@ interface Props {
 export const CommentList = memo(({ className, comments, isLoading }: Props) => {
     if (isLoading) {
         return (
-            <div className={classNames(cls.CommentList, {}, [className])}>
+            <VStack gap="16" align="stretch" max className={classNames('', {}, [className])}>
                 <CommentCard
                     isLoading={isLoading}
-                    className={cls.comment}
                 />
                 <CommentCard
                     isLoading={isLoading}
-                    className={cls.comment}
                 />
                 <CommentCard
                     isLoading={isLoading}
-                    className={cls.comment}
                 />
-            </div>
+            </VStack>
         );
     }
     return (
-        <div className={classNames(cls.CommentList, {}, [className])}>
+        <VStack gap="16" align="stretch" max className={classNames('', {}, [className])}>
             {comments?.length
                 ? comments.map((comment) => (
                     <CommentCard
                         key={comment.id}
                         isLoading={isLoading}
-                        className={cls.comment}
                         comment={comment}
                     />
                 ))
                 : <Text title={t('Комментариев нет')} /> }
-        </div>
+        </VStack>
     );
 });

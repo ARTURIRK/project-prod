@@ -4,6 +4,7 @@ import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import { Text } from 'shared/ui/Text/Text';
+import { VStack } from 'shared/ui/Stack';
 import type { IComment } from '../../model/types/comment';
 import cls from './CommentCard.module.scss';
 
@@ -17,10 +18,10 @@ export function CommentCard({ className, comment, isLoading }: Props) {
     if (isLoading) {
         return (
             <div className={classNames(cls.CommentCard, {}, [className, cls.loading])}>
-                <div className={cls.header}>
+                <VStack gap="8">
                     <Skeleton border="50%" width={30} height={30} />
                     <Skeleton height={16} width={100} className={cls.username} />
-                </div>
+                </VStack>
                 <Skeleton className={cls.text} width="100%" height={50} />
             </div>
         );
@@ -29,13 +30,13 @@ export function CommentCard({ className, comment, isLoading }: Props) {
         return null;
     }
     return (
-        <div className={classNames(cls.CommentCard, {}, [className])}>
-            <AppLink to={`${RoutePath.profile}${comment.user.id}`} className={cls.header}>
+        <VStack gap="8" className={classNames(cls.CommentCard, {}, [className])}>
+            <AppLink to={`${RoutePath.profile}${comment.user.id}`}>
                 {comment.user.avatar && <Avatar size={30} src={comment.user.avatar} />}
-                <Text className={cls.username} title={comment.user.username} />
+                <Text title={comment.user.username} />
             </AppLink>
             <Text className={cls.text} text={comment.text} />
 
-        </div>
+        </VStack>
     );
 }

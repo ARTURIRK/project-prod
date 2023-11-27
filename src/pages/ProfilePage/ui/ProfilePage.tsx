@@ -11,6 +11,7 @@ import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/Dynamic
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { VStack } from 'shared/ui/Stack';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
 interface Props {
@@ -47,9 +48,10 @@ export default function ProfilePage({ className }: Props) {
     return (
         <DynamicModuleLoader reducers={reducers}>
             <Page className={classNames('', {}, [className])}>
-                <ProfilePageHeader readonly={profile?.readonly} />
-                {
-                    profile?.validateError?.length
+                <VStack gap="16" align="stretch" max>
+                    <ProfilePageHeader readonly={profile?.readonly} />
+                    {
+                        profile?.validateError?.length
                     && profile.validateError.map((el) => (
                         <Text
                             key={el}
@@ -57,14 +59,16 @@ export default function ProfilePage({ className }: Props) {
                             text={validateErrorTranslations[el]}
                         />
                     ))
-                }
-                <ProfileCard
-                    onChangeProfileInfo={onChangeProfileInfo}
-                    isLoading={profile?.isLoading}
-                    readonly={profile?.readonly}
-                    error={profile?.error}
-                    data={profile?.form}
-                />
+                    }
+                    <ProfileCard
+                        onChangeProfileInfo={onChangeProfileInfo}
+                        isLoading={profile?.isLoading}
+                        readonly={profile?.readonly}
+                        error={profile?.error}
+                        data={profile?.form}
+                    />
+                </VStack>
+
             </Page>
         </DynamicModuleLoader>
     );

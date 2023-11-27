@@ -7,6 +7,7 @@ import { AlignText, Text, TextTheme } from 'shared/ui/Text/Text';
 import { Input } from 'shared/ui/Input/Input';
 import { Loader } from 'shared/ui/Loader/Loader';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
+import { HStack, VStack } from 'shared/ui/Stack';
 import { Profile } from '../../models/types/profile';
 import cls from './ProfileCard.module.scss';
 
@@ -30,92 +31,89 @@ export const ProfileCard = memo(({
     const { t } = useTranslation();
     if (isLoading) {
         return (
-            <div className={classNames(cls.ProfileCard, {}, [className, cls.loading])}>
+            <HStack align="center" justify="center" className={classNames(cls.ProfileCard, {}, [className, cls.loading])}>
                 <Loader />
-            </div>
+            </HStack>
         );
     }
 
     if (error) {
         return (
-            <div className={classNames(cls.ProfileCard, {}, [className, cls.error])}>
+            <HStack align="center" justify="center" className={classNames(cls.ProfileCard, {}, [className, cls.error])}>
                 <Text
                     theme={TextTheme.ERROR}
                     title={t('Произошла ошибка при загрузке')}
                     text={t('Попробуйте обновить страницу')}
                     align={AlignText.CENTER}
                 />
-            </div>
+            </HStack>
         );
     }
     const Mods = {
         [cls.editing]: !readonly,
     };
     return (
-        <div className={classNames(cls.ProfileCard, Mods, [className])}>
-            <div className={cls.data}>
-
-                {data?.avatar
+        <VStack gap="16" align="stretch" max className={classNames(cls.ProfileCard, Mods, [className])}>
+            {data?.avatar
                 && (
-                    <div className={cls.avatarWrapper}>
+                    <HStack align="center" justify="center" max className={cls.avatarWrapper}>
                         <Avatar alt="AVATAR" src={data.avatar} size={80} />
-                    </div>
+                    </HStack>
                 )}
-                <Input
-                    readonly={readonly}
-                    className={cls.input}
-                    value={data?.firstName}
-                    placeholder={t('Ваше имя')}
-                    onChange={(value) => onChangeProfileInfo('firstName', value)}
-                />
-                <Input
-                    readonly={readonly}
-                    className={cls.input}
-                    value={data?.lastName}
-                    placeholder={t('Ваша фамилия')}
-                    onChange={(value) => onChangeProfileInfo('lastName', value)}
-                />
-                <Input
-                    readonly={readonly}
-                    className={cls.input}
-                    value={data?.age}
-                    placeholder={t('Ваш возраст')}
-                    onChange={(value) => onChangeProfileInfo('age', value)}
-                />
-                <Input
-                    readonly={readonly}
-                    className={cls.input}
-                    value={data?.city}
-                    placeholder={t('Ваш город')}
-                    onChange={(value) => onChangeProfileInfo('city', value)}
-                />
-                <Input
-                    readonly={readonly}
-                    className={cls.input}
-                    value={data?.username}
-                    placeholder={t('Имя пользователя')}
-                    onChange={(value) => onChangeProfileInfo('username', value)}
-                />
-                <Input
-                    readonly={readonly}
-                    className={cls.input}
-                    value={data?.avatar}
-                    placeholder={t('Введите ссылку на аватар')}
-                    onChange={(value) => onChangeProfileInfo('avatar', value)}
-                />
-                <CurrencySelect
-                    className={cls.input}
-                    value={data?.currency}
-                    onChange={(value) => onChangeProfileInfo('currency', value)}
-                    readonly={readonly}
-                />
-                <CountrySelect
-                    className={cls.input}
-                    value={data?.country}
-                    onChange={(value) => onChangeProfileInfo('country', value)}
-                    readonly={readonly}
-                />
-            </div>
-        </div>
+            <Input
+                readonly={readonly}
+                className={cls.input}
+                value={data?.firstName}
+                placeholder={t('Ваше имя')}
+                onChange={(value) => onChangeProfileInfo('firstName', value)}
+            />
+            <Input
+                readonly={readonly}
+                className={cls.input}
+                value={data?.lastName}
+                placeholder={t('Ваша фамилия')}
+                onChange={(value) => onChangeProfileInfo('lastName', value)}
+            />
+            <Input
+                readonly={readonly}
+                className={cls.input}
+                value={data?.age}
+                placeholder={t('Ваш возраст')}
+                onChange={(value) => onChangeProfileInfo('age', value)}
+            />
+            <Input
+                readonly={readonly}
+                className={cls.input}
+                value={data?.city}
+                placeholder={t('Ваш город')}
+                onChange={(value) => onChangeProfileInfo('city', value)}
+            />
+            <Input
+                readonly={readonly}
+                className={cls.input}
+                value={data?.username}
+                placeholder={t('Имя пользователя')}
+                onChange={(value) => onChangeProfileInfo('username', value)}
+            />
+            <Input
+                readonly={readonly}
+                className={cls.input}
+                value={data?.avatar}
+                placeholder={t('Введите ссылку на аватар')}
+                onChange={(value) => onChangeProfileInfo('avatar', value)}
+            />
+            <CurrencySelect
+                className={cls.input}
+                value={data?.currency}
+                onChange={(value) => onChangeProfileInfo('currency', value)}
+                readonly={readonly}
+            />
+            <CountrySelect
+                className={cls.input}
+                value={data?.country}
+                onChange={(value) => onChangeProfileInfo('country', value)}
+                readonly={readonly}
+            />
+        </VStack>
     );
 });

@@ -44,7 +44,6 @@ export default function ProfilePage({ className }: Props) {
             dispatch(profileActions.updateProfile({ [key]: value || '' }));
         }
     }, [dispatch]);
-
     return (
         <DynamicModuleLoader reducers={reducers}>
             <Page className={classNames('', {}, [className])}>
@@ -52,7 +51,7 @@ export default function ProfilePage({ className }: Props) {
                     <ProfilePageHeader readonly={profile?.readonly} />
                     {
                         profile?.validateError?.length
-                    && profile.validateError.map((el) => (
+                    && profile?.validateError.map((el) => (
                         <Text
                             key={el}
                             theme={TextTheme.ERROR}

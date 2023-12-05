@@ -31,7 +31,7 @@ export const ProfileCard = memo(({
     const { t } = useTranslation();
     if (isLoading) {
         return (
-            <HStack align="center" justify="center" className={classNames(cls.ProfileCard, {}, [className, cls.loading])}>
+            <HStack align="center" justify="center" max className={classNames(cls.ProfileCard, {}, [className, cls.loading])}>
                 <Loader />
             </HStack>
         );
@@ -39,7 +39,7 @@ export const ProfileCard = memo(({
 
     if (error) {
         return (
-            <HStack align="center" justify="center" className={classNames(cls.ProfileCard, {}, [className, cls.error])}>
+            <HStack align="center" justify="center" max className={classNames(cls.ProfileCard, {}, [className, cls.error])}>
                 <Text
                     theme={TextTheme.ERROR}
                     title={t('Произошла ошибка при загрузке')}

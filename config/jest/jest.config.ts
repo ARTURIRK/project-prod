@@ -8,7 +8,7 @@ import path from 'path';
 export default {
     globals: {
         __IS_DEV__: true,
-        __IS_API__: '',
+        __API__: '',
         __PROJECT__: 'jest',
     },
     clearMocks: true,
@@ -40,6 +40,14 @@ export default {
         '\\.s?css$': 'identity-obj-proxy',
         '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
     },
+    reporters: [
+        'default',
+        ['./node_modules/jest-html-reporter', {
+            outputPath: '<rootDir>/reports/unit',
+            filename: 'report.html',
+            openReport: true,
+        }],
+    ],
     // Indicates whether the coverage information should be collected while executing the test
     // collectCoverage: false,
 

@@ -17,7 +17,7 @@ declare module '*.svg' {
 }
 
 declare const __IS_DEV__: boolean;
-declare const __IS_API__: string;
+declare const __API__: string;
 declare const __PROJECT__: 'frontend' | 'jest' | 'storybook';
 
 type DeepPartial<T> = T extends object ? {

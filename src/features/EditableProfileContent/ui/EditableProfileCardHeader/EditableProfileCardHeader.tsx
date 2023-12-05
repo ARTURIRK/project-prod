@@ -1,4 +1,3 @@
-import { getProfileInfo, profileActions, updateProfileData } from 'entities/Profile';
 import { getUserAuthData } from 'entities/User';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -7,13 +6,15 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { HStack } from 'shared/ui/Stack';
 import { Text } from 'shared/ui/Text/Text';
+import { profileActions } from '../../model/slice/profileSlice';
+import { getProfileInfo } from '../../model/selectors/getProfileInfo';
+import { updateProfileData } from '../../model/servives/updateProfileData/updateProfileData';
 
 interface Props {
  className?: string;
- readonly?: boolean;
 }
 
-export function ProfilePageHeader({ className, readonly }: Props) {
+export function EditableProfileCardHeader({ className }: Props) {
     const { t } = useTranslation();
     const authData = useSelector(getUserAuthData);
     const profileData = useSelector(getProfileInfo);
@@ -22,11 +23,11 @@ export function ProfilePageHeader({ className, readonly }: Props) {
     const onSave = () => dispatch(updateProfileData());
     const onCancel = () => dispatch(profileActions.cancelEdit());
     return (
-        <HStack justify="between" className={classNames('', {}, [className])}>
+        <HStack justify="between" max className={classNames('', {}, [className])}>
             <Text title={t('Профиль')} />
             {
                 authData?.id === profileData?.data?.id && (
-                    readonly ? (
+                    profileData?.readonly ? (
                         <Button theme={ButtonTheme.OUTLINE} onClick={onEdit}>
                             {t('Редактировать')}
                         </Button>

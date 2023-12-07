@@ -66,6 +66,7 @@ export const ProfileCard = memo(({
                 value={data?.firstName}
                 placeholder={t('Ваше имя')}
                 onChange={(value) => onChangeProfileInfo('firstName', value)}
+                data-testid="ProfileCard.FirstName"
             />
             <Input
                 readonly={readonly}
@@ -73,6 +74,7 @@ export const ProfileCard = memo(({
                 value={data?.lastName}
                 placeholder={t('Ваша фамилия')}
                 onChange={(value) => onChangeProfileInfo('lastName', value)}
+                data-testid="ProfileCard.LastName"
             />
             <Input
                 readonly={readonly}
@@ -80,6 +82,7 @@ export const ProfileCard = memo(({
                 value={data?.age}
                 placeholder={t('Ваш возраст')}
                 onChange={(value) => onChangeProfileInfo('age', value)}
+                data-testid="ProfileCard.AgeN"
             />
             <Input
                 readonly={readonly}
@@ -87,6 +90,7 @@ export const ProfileCard = memo(({
                 value={data?.city}
                 placeholder={t('Ваш город')}
                 onChange={(value) => onChangeProfileInfo('city', value)}
+                data-testid="ProfileCard.City"
             />
             <Input
                 readonly={readonly}
@@ -94,6 +98,7 @@ export const ProfileCard = memo(({
                 value={data?.username}
                 placeholder={t('Имя пользователя')}
                 onChange={(value) => onChangeProfileInfo('username', value)}
+                data-testid="ProfileCard.UserName"
             />
             <Input
                 readonly={readonly}
@@ -101,18 +106,21 @@ export const ProfileCard = memo(({
                 value={data?.avatar}
                 placeholder={t('Введите ссылку на аватар')}
                 onChange={(value) => onChangeProfileInfo('avatar', value)}
+                data-testid="ProfileCard.Avatar"
             />
             <CurrencySelect
                 className={cls.input}
                 value={data?.currency}
                 onChange={(value) => onChangeProfileInfo('currency', value)}
                 readonly={readonly}
+                data-testid="ProfileCard.Currency"
             />
             <CountrySelect
                 className={cls.input}
                 value={data?.country}
                 onChange={(value) => onChangeProfileInfo('country', value)}
                 readonly={readonly}
+                data-testid="ProfileCard.Country"
             />
         </VStack>
     );

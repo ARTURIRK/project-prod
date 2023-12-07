@@ -25,19 +25,21 @@ const maapSizeToHeaderTag: Record<TextSize, HeaderTagType> = {
     [TextSize.M]: 'h2',
     [TextSize.L]: 'h1',
 };
-interface TextProps {
+interface Props {
     className?: string;
     size?: TextSize;
     title?: string;
     text?: string;
     theme?: TextTheme;
     align?: AlignText;
+    'data-testid'?: string;
 }
 
-export const Text = memo((props: TextProps) => {
+export const Text = memo((props: Props) => {
     const {
         theme = TextTheme.PRIMARY,
         align = AlignText.LEFT,
+        'data-testid': dataTestId = 'Text',
         size = TextSize.M,
         className,
         title,
@@ -51,8 +53,8 @@ export const Text = memo((props: TextProps) => {
     };
     return (
         <div className={classNames(cls.Text, mods, [className])}>
-            {title && <HeaderTag className={cls.title}>{title}</HeaderTag>}
-            {text && <p className={cls.text}>{text}</p>}
+            {title && <HeaderTag className={cls.title} data-testid={`${dataTestId}.Header`}>{title}</HeaderTag>}
+            {text && <p className={cls.text} data-testid={`${dataTestId}.Paragraph`}>{text}</p>}
         </div>
     );
 });

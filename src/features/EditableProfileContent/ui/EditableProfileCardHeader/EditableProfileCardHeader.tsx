@@ -28,7 +28,7 @@ export function EditableProfileCardHeader({ className }: Props) {
             {
                 authData?.id === profileData?.data?.id && (
                     profileData?.readonly ? (
-                        <Button theme={ButtonTheme.OUTLINE} onClick={onEdit}>
+                        <Button theme={ButtonTheme.OUTLINE} onClick={onEdit} data-testid="EditableProfileCardHeader.Edit">
                             {t('Редактировать')}
                         </Button>
                     ) : (
@@ -36,12 +36,14 @@ export function EditableProfileCardHeader({ className }: Props) {
                             <Button
                                 theme={ButtonTheme.OUTLINE}
                                 onClick={onSave}
+                                data-testid="EditableProfileCardHeader.Save"
                             >
                                 {t('Сохранить')}
                             </Button>
                             <Button
                                 theme={ButtonTheme.OUTLINE_RED}
                                 onClick={onCancel}
+                                data-testid="EditableProfileCardHeader.Cancel"
                             >
                                 {t('Отменить')}
                             </Button>

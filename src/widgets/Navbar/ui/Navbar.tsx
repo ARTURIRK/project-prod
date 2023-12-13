@@ -5,7 +5,9 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { LoginModal } from 'features/AuthByUsername';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { getUserAuthData, userActions } from 'entities/User';
+import {
+    getUserAuthData, isUserAdmin, isUserModerator, userActions,
+} from 'entities/User';
 import { Text } from 'shared/ui/Text/Text';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { Dropdown } from 'shared/ui/Dropdown/Dropdown';
@@ -20,6 +22,8 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     const { t } = useTranslation();
     const [isAuthModal, setIsAuthModal] = useState(false);
     const authData = useSelector(getUserAuthData);
+    const isAdmin = useSelector(isUserAdmin);
+    const isModerator = useSelector(isUserModerator);
     const dispatch = useDispatch();
 
     const onCloseModal = useCallback(() => {
@@ -48,7 +52,10 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                 <Dropdown
                     className={cls.dropdown}
                     direction="bottom left"
-                    items={[{
+                    items={[...(isAdmin || isModerator ? [{
+                        content: t('Админка'),
+                        href: RoutePath.admin_panel,
+                    }] : []), {
                         content: t('Выйти'),
                         onClick: onLogout,
                     },

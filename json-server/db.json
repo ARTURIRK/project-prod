@@ -614,14 +614,14 @@
       "id": "1",
       "username": "admin",
       "password": "123",
-      "role": "ADMIN",
+      "roles": ["ADMIN"],
       "avatar": "https://s0.rbk.ru/v6_top_pics/media/img/7/19/756752350085197.webp"
     },
     {
       "id": "2",
       "username": "user",
-      "password": "123",
-      "role": "USER",
+      "password": "1234",
+      "roles": ["USER"],
       "avatar": "https://w.forfun.com/fetch/b4/b48a66b3c4ea0107be482a87f1e50fb8.jpeg"
     }
   ],

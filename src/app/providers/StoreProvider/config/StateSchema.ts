@@ -10,7 +10,7 @@ import type { ArticleDetailsSchema } from 'entities/Article';
 import type { LoginSchema } from 'features/AuthByUsername';
 import { AddCommentFormSchema } from 'features/addCommentForm';
 import { ScrollSaverSchema } from 'features/ScrollSaver';
-import { ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage/model/types';
+import type { ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage/model/types';
 import { rtkApi } from 'shared/api/rtkApi';
 
 export interface StateSchema {

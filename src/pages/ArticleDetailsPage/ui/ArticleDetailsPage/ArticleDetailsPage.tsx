@@ -1,6 +1,5 @@
 import { memo } from 'react';
 import { useParams } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 import { ArticleDetails } from 'entities/Article';
 import { Page } from 'widgets/Page/Page';
 import { ArticleRecommendationsList } from 'features/articleRecommendationsList';
@@ -19,15 +18,8 @@ const reducers: ReducersList = {
     articleDetailsPage: articleDetailsPageReducer,
 };
 const ArticleDetailsPage = (({ className }: Props) => {
-    const { t } = useTranslation('article');
     const { id } = useParams<{id: string}>();
-    if (!id) {
-        return (
-            <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-                {t('Статья не найдена')}
-            </div>
-        );
-    }
+
     return (
         <DynamicModuleLoader reducers={reducers}>
             <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>

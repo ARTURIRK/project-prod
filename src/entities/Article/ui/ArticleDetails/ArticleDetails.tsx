@@ -1,6 +1,5 @@
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { AlignText, Text } from 'shared/ui/Text/Text';
@@ -11,10 +10,10 @@ import DateIcon from 'shared/assets/icons/date.svg';
 import { Icon } from 'shared/ui/Icon/Icon';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { HStack, VStack } from 'shared/ui/Stack';
+import { useAppSelector } from 'shared/lib/hooks/useAppSelector';
 import { fetchArticleById } from '../../../Article/model/services/fetchArticleById/fetchArticleById';
-import { ArticleBlock, ArticleBlockType } from '../../model/types/article';
-import { getArticleDetailsData, getArticleDetailsError, getArticleDetailsIsLoading } from
-    '../../model/selectors/articleDetails';
+import { ArticleBlock } from '../../model/types/article';
+import { ArticleBlockType } from '../../model/consts/consts';
 import { articleDetailsReducer } from '../../model/slices/articleDetailsSlice';
 import cls from './ArticleDetails.module.scss';
 import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
@@ -23,7 +22,7 @@ import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/Articl
 
 interface Props {
  className?: string;
- id: string;
+ id?: string;
 }
 const reducers: ReducersList = {
     articleDetails: articleDetailsReducer,
@@ -31,9 +30,9 @@ const reducers: ReducersList = {
 export const ArticleDetails = memo(({ className, id }: Props) => {
     const dispatch = useAppDispatch();
     const { t } = useTranslation('article');
-    const error = useSelector(getArticleDetailsError);
-    const isLoading = useSelector(getArticleDetailsIsLoading);
-    const article = useSelector(getArticleDetailsData);
+    const error = useAppSelector((state) => state.articleDetails?.error || '');
+    const isLoading = useAppSelector((state) => state.articleDetails?.isLoading || false);
+    const article = useAppSelector((state) => state.articleDetails?.data);
     const renderBlock = (block: ArticleBlock) => {
         switch (block.type) {
         case ArticleBlockType.CODE:

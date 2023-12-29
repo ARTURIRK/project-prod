@@ -5,8 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useSelector } from 'react-redux';
-import { getArticleDetailsData } from 'entities/Article/model/selectors/articleDetails';
 import { HStack } from 'shared/ui/Stack';
+import { useAppSelector } from 'shared/lib/hooks/useAppSelector';
 import { getCanEditArticle } from '../../model/selectors/article';
 
 interface Props {
@@ -17,7 +17,7 @@ export const ArticleDetailsPageHeader = memo(({ className }: Props) => {
     const { t } = useTranslation();
     const navigate = useNavigate();
     const canEdit = useSelector(getCanEditArticle);
-    const article = useSelector(getArticleDetailsData);
+    const article = useAppSelector((state) => state.articleDetails?.data);
 
     const onBackToList = useCallback(() => {
         navigate(RoutePath.articles);

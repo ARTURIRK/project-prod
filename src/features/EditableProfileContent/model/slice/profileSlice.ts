@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Profile } from 'entities/Profile';
+import type { Profile } from 'entities/Profile';
 import { fetchProfileData } from '../servives/fetchProfileData/fetchProfileData';
 import { updateProfileData } from '../servives/updateProfileData/updateProfileData';
-import { ProfileSchema, ValidateProfileError } from '../types/editableProfileCardSchema';
+import type { ProfileSchema } from '../types/editableProfileCardSchema';
+import { ValidateProfileError } from '../consts/consts';
 
 const initialState: ProfileSchema = {
     readonly: true,

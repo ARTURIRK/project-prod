@@ -5,10 +5,11 @@ import cls from './Icon.module.scss';
 interface Props {
  className?: string;
  Svg: VFC<SVGProps<SVGSVGElement>>;
+ inverted?: boolean;
 }
 
-export function Icon({ className, Svg }: Props) {
+export function Icon({ className, Svg, inverted }: Props) {
     return (
-        <Svg className={classNames(cls.Icon, {}, [className])}> </Svg>
+        <Svg className={classNames(inverted ? cls.inverted : cls.Icon, {}, [className])}> </Svg>
     );
 }

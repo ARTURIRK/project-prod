@@ -3,15 +3,15 @@ import { CombinedState } from 'redux';
 import {
     AnyAction, EnhancedStore, Reducer, ReducersMapObject,
 } from '@reduxjs/toolkit';
-import { ArticlesPageSchema } from 'pages/ArticlesPage';
-import type { UserSchema } from 'entities/User';
-import type { ProfileSchema } from 'features/EditableProfileContent';
-import type { ArticleDetailsSchema } from 'entities/Article';
-import type { LoginSchema } from 'features/AuthByUsername';
-import { AddCommentFormSchema } from 'features/addCommentForm';
-import { ScrollSaverSchema } from 'features/ScrollSaver';
-import type { ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage/model/types';
-import { rtkApi } from 'shared/api/rtkApi';
+import { ArticlesPageSchema } from '@/pages/ArticlesPage';
+import type { UserSchema } from '@/entities/User';
+import type { ProfileSchema } from '@/features/EditableProfileContent';
+import type { ArticleDetailsSchema } from '@/entities/Article';
+import type { LoginSchema } from '@/features/AuthByUsername';
+import { AddCommentFormSchema } from '@/features/addCommentForm';
+import { ScrollSaverSchema } from '@/features/ScrollSaver';
+import type { ArticleDetailsPageSchema } from '@/pages/ArticleDetailsPage/model/types';
+import { rtkApi } from '@/shared/api/rtkApi';
 
 export interface StateSchema {
     user: UserSchema;

@@ -17,30 +17,31 @@ export enum ButtonSize {
   XL = 'size_xl',
 }
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   theme?: ButtonTheme;
   square?: boolean;
   size?: ButtonSize;
   disabled?: boolean;
+  fullWidth?: boolean;
 }
 
-export const Button = memo((props: ButtonProps) => {
-    const {
-        theme = ButtonTheme.OUTLINE,
-        size = ButtonSize.M,
-        className,
-        children,
-        disabled,
-        square,
-        ...otherProps
-    } = props;
-
+export const Button = memo(({
+    theme = ButtonTheme.OUTLINE,
+    size = ButtonSize.M,
+    fullWidth,
+    className,
+    children,
+    disabled,
+    square,
+    ...otherProps
+}: Props) => {
     const mods: Mods = {
         [cls[theme]]: true,
         [cls.square]: square,
         [cls[size]]: true,
         [cls.disabled]: disabled,
+        [cls.fullWidth]: fullWidth,
     };
 
     return (

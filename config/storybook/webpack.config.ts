@@ -13,7 +13,7 @@ export default ({ config }: {config: webpack.Configuration}) => {
         locales: '',
     };
     config!.resolve!.modules!.push(paths.src);
-    config.resolve!.alias = { '@': paths.src };
+    config.resolve!.alias = { ...config!.resolve!.alias, '@': paths.src };
     config!.resolve!.extensions!.push('.ts', '.tsx');
     // @ts-ignore
     config!.module!.rules = config!.module!.rules!.map((rule: RuleSetRule) => {

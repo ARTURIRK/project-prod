@@ -5,7 +5,7 @@ import { Theme } from '@/app/providers/ThemeProvider';
 import { NotificationItem } from './NotificationItem';
 
 export default {
-    title: 'pages/AboutPage',
+    title: 'entities/Notification/NotificationItem',
     component: NotificationItem,
     argTypes: {
         backgroundColor: { control: 'color' },

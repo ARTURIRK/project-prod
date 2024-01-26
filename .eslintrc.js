@@ -52,7 +52,8 @@ module.exports = {
         'import/no-extraneous-dependencies': 'off',
         'no-underscore-dangle': 'off',
         'react/no-array-index-key': 'off',
-        'relative-path-arturts/path-checker': ['error', {alias:'@'}],
+        'relative-path-arturts/path-checker': ['error', { alias: '@' }],
+        'relative-path-arturts/public-api-imports': ['error', { alias: '@' }],
         'i18next/no-literal-string': [
             'error',
             {

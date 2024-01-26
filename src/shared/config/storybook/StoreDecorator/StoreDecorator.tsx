@@ -1,6 +1,8 @@
 import { Story } from '@storybook/react';
+// eslint-disable-next-line relative-path-arturts/public-api-imports
 import { articleDetailsPageReducer } from '@/pages/ArticleDetailsPage/model/slices';
 import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
+// eslint-disable-next-line relative-path-arturts/public-api-imports
 import { loginReducer } from '@/features/AuthByUsername/model/slice/loginSlice';
 import { ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { articleDetailsReducer } from '@/entities/Article';

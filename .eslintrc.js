@@ -52,7 +52,7 @@ module.exports = {
         'import/no-extraneous-dependencies': 'off',
         'no-underscore-dangle': 'off',
         'react/no-array-index-key': 'off',
-        'relative-path-arturts/path-checker': 'error',
+        'relative-path-arturts/path-checker': ['error', {alias:'@'}],
         'i18next/no-literal-string': [
             'error',
             {

@@ -7413,10 +7413,10 @@
     "semver" "^6.3.0"
     "string.prototype.matchall" "^4.0.6"
 
-"eslint-plugin-relative-path-arturts@^0.0.3":
-  "integrity" "sha512-NPupdJxA/lJPaJZjk2Hx76QhOVkcOcTcyiyxWSgzXGlx4FTM2IjS5Ai+oO2isPOWrdHz63JvDVTvJEANwsOBgA=="
-  "resolved" "https://registry.npmjs.org/eslint-plugin-relative-path-arturts/-/eslint-plugin-relative-path-arturts-0.0.3.tgz"
-  "version" "0.0.3"
+"eslint-plugin-relative-path-arturts@^0.0.4":
+  "integrity" "sha512-ITUJVMd/F6G97VO8NGyg91ezBcRl8B9H92lVh7xPC+HB4USzbykHj5HJxWWI9yufB2Fn9uTaJ8CoZcpW3B40NQ=="
+  "resolved" "https://registry.npmjs.org/eslint-plugin-relative-path-arturts/-/eslint-plugin-relative-path-arturts-0.0.4.tgz"
+  "version" "0.0.4"
   dependencies:
     "requireindex" "^1.2.0"
 

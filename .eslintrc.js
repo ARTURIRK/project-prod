@@ -53,7 +53,7 @@ module.exports = {
         'no-underscore-dangle': 'off',
         'react/no-array-index-key': 'off',
         'relative-path-arturts/path-checker': ['error', { alias: '@' }],
-        'relative-path-arturts/public-api-imports': ['error', { alias: '@' }],
+        'relative-path-arturts/public-api-imports': ['error', { alias: '@', testFilesPatterns: ['**/*.test.*', '**/*.stories.*'] }],
         'i18next/no-literal-string': [
             'error',
             {

@@ -53,7 +53,16 @@ module.exports = {
         'no-underscore-dangle': 'off',
         'react/no-array-index-key': 'off',
         'relative-path-arturts/path-checker': ['error', { alias: '@' }],
-        'relative-path-arturts/public-api-imports': ['error', { alias: '@', testFilesPatterns: ['**/*.test.*', '**/*.stories.*'] }],
+        'relative-path-arturts/public-api-imports': ['error', {
+            alias: '@',
+            testFilesPatterns: ['**/*.test.*', '**/*.stories.*', '**/StoreDecorator.tsx'],
+        }],
+        'relative-path-arturts/layer-imports': ['error',
+            {
+                alias: '@',
+                ignoreImportPatterns: ['**/StoreProvider', '**/testing'],
+            },
+        ],
         'i18next/no-literal-string': [
             'error',
             {

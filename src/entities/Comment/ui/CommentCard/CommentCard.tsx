@@ -1,4 +1,4 @@
-import { RoutePath } from '@/shared/const';
+import { getRouteProfile } from '@/shared/const';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink';
 import { Avatar } from '@/shared/ui/Avatar';
@@ -31,7 +31,7 @@ export function CommentCard({ className, comment, isLoading }: Props) {
     }
     return (
         <VStack gap="8" className={classNames(cls.CommentCard, {}, [className])}>
-            <AppLink to={`${RoutePath.profile}${comment.user.id}`}>
+            <AppLink to={getRouteProfile(comment.user.id)}>
                 {comment.user.avatar && <Avatar size={30} src={comment.user.avatar} />}
                 <Text title={comment.user.username} />
             </AppLink>

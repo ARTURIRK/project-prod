@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { RoutePath } from '@/shared/const';
+import { getRouteAdmin, getRouteProfile } from '@/shared/const';
 import { Avatar } from '@/shared/ui/Avatar';
 import { Dropdown } from '@/shared/ui/Popups';
 import {
@@ -32,14 +32,14 @@ export const AvatarDropdown = memo(({ className } :Props) => {
             direction="bottom left"
             items={[...(isAdmin || isModerator ? [{
                 content: t('Админка'),
-                href: RoutePath.admin_panel,
+                href: getRouteAdmin(),
             }] : []), {
                 content: t('Выйти'),
                 onClick: onLogout,
             },
             {
                 content: t('Профиль'),
-                href: RoutePath.profile + authData.id,
+                href: getRouteProfile(authData.id),
             }]}
             trigger={<Avatar size={30} src={authData.avatar} />}
         />

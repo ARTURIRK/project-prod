@@ -23,6 +23,7 @@ module.exports = {
         'i18next',
         'react-hooks',
         'relative-path-arturts',
+        'unused-imports',
     ],
     rules: {
         'react/jsx-indent': [2, 4],
@@ -48,6 +49,7 @@ module.exports = {
         'no-shadow': 'off',
         'jsx-a11y/no-static-element-interactions': 'off',
         'jsx-a11y/click-events-have-key-events': 'off',
+        'unused-imports/no-unused-imports': 'error',
         'import/extensions': 'off',
         'import/no-extraneous-dependencies': 'off',
         'no-underscore-dangle': 'off',

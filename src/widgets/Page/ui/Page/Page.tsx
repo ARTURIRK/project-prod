@@ -3,7 +3,7 @@ import {
 } from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { getScrollPositionByPath, scrollSaverActions } from '@/features/ScrollSaver';
+import { getScrollPositionByPath, scrollSaverActions } from '@/features/scrollSaver';
 import { StateSchema } from '@/app/providers/StoreProvider';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';

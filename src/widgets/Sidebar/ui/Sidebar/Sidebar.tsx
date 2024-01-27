@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import { LangSwitcher } from '@/features/LangSwitcher';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { ThemeSwitcher } from '@/features/ThemeSwitcher';
+import { ThemeSwitcher } from '@/features/themeSwitcher';
 import { VStack } from '@/shared/ui/Stack';
 import cls from './Sidebar.module.scss';
 import { SidebarItem } from '../SidebarItem/SidebarItem';

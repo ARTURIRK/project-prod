@@ -5,11 +5,11 @@ import {
 } from '@reduxjs/toolkit';
 import { ArticlesPageSchema } from '@/pages/ArticlesPage';
 import type { UserSchema } from '@/entities/User';
-import type { ProfileSchema } from '@/features/EditableProfileContent';
+import type { ProfileSchema } from '@/features/editableProfileContent';
 import type { ArticleDetailsSchema } from '@/entities/Article';
-import type { LoginSchema } from '@/features/AuthByUsername';
+import type { LoginSchema } from '@/features/authByUsername';
 import { AddCommentFormSchema } from '@/features/addCommentForm';
-import { ScrollSaverSchema } from '@/features/ScrollSaver';
+import { ScrollSaverSchema } from '@/features/scrollSaver';
 import type { ArticleDetailsPageSchema } from '@/pages/ArticleDetailsPage';
 import { rtkApi } from '@/shared/api/rtkApi';
 

@@ -4,7 +4,7 @@ import { ArticleRecommendationsList } from '@/features/articleRecommendationsLis
 import { ArticleRating } from '@/features/articleRating';
 import { ArticleDetails } from '@/entities/Article';
 import { Page } from '@/widgets/Page';
-import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { DynamicModuleLoader, type ReducersList } from '@/shared/lib/components';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { VStack } from '@/shared/ui/Stack';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';

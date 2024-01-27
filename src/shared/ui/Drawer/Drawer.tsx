@@ -3,7 +3,7 @@ import {
 } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useTheme } from '@/shared/lib/hooks/useTheme';
-import { AnimationProvider, useAnimationLibs } from '@/shared/lib/components/AnimationProvider';
+import { AnimationProvider, useAnimationLibs } from '@/shared/lib/components';
 import { Overlay } from '../Overlay/Overlay';
 import cls from './Drawer.module.scss';
 import { Portal } from '../Portal/Portal';
@@ -18,18 +18,16 @@ interface Props {
 
 const height = window.innerHeight - 100;
 
-export const DrawerContent = memo((props: Props) => {
+export const DrawerContent = memo(({
+    className,
+    children,
+    onClose,
+    isOpen,
+    lazy,
+}: Props) => {
     const { Spring, Gesture } = useAnimationLibs();
     const [{ y }, api] = Spring.useSpring(() => ({ y: height }));
     const { theme } = useTheme();
-    const {
-        className,
-        children,
-        onClose,
-        isOpen,
-        lazy,
-    } = props;
-
     const openDrawer = useCallback(() => {
         api.start({ y: 0, immediate: false });
     }, [api]);

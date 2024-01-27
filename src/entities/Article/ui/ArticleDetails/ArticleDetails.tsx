@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { DynamicModuleLoader, type ReducersList } from '@/shared/lib/components';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { AlignText, Text } from '@/shared/ui/Text';
 import { Skeleton } from '@/shared/ui/Skeleton';

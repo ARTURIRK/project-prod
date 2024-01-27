@@ -25,6 +25,7 @@ export const CountrySelect = memo(
             }
         };
         return (
+
             <ListBox
                 className={className}
                 label={t('Укажите страну')}

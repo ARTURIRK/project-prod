@@ -41,6 +41,7 @@ module.exports = {
         'react/react-in-jsx-scope': 'off',
         'react/jsx-props-no-spreading': 'off',
         'no-param-reassign': 'off',
+        'react/destructuring-assignment': 'off',
         'linebreak-style': 'off',
         'no-undef': 'off',
         'react/function-component-definition': 'off',

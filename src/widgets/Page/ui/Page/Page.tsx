@@ -10,17 +10,17 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect';
 import { useThrottle } from '@/shared/lib/hooks/useThrottle';
+import { TestProps } from '@/shared/types';
 import cls from './Page.module.scss';
 
-interface Props {
+interface Props extends TestProps {
  className?: string;
  children: ReactNode;
  onScrollEnd?: () => void;
 }
 
-export const Page = ({
-    className, children, onScrollEnd,
-}: Props) => {
+export const Page = (props: Props) => {
+    const { className, children, onScrollEnd } = props;
     const { pathname } = useLocation();
     const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
     const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
@@ -38,7 +38,12 @@ export const Page = ({
         wrapperRef.current.scrollTop = scrollPosition;
     });
     return (
-        <main onScroll={onScrollHandler} ref={wrapperRef} className={classNames(cls.Page, {}, [className])}>
+        <main
+            data-testid={props['data-testid'] ?? 'Page'}
+            onScroll={onScrollHandler}
+            ref={wrapperRef}
+            className={classNames(cls.Page, {}, [className])}
+        >
             {children}
             {onScrollEnd ? <div className={cls.trigger} ref={triggerRef} /> : null}
         </main>

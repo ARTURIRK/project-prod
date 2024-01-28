@@ -11,7 +11,7 @@ interface Props {
 export default function ProfilePage({ className }: Props) {
     const { id } = useParams<{id: string}>();
     return (
-        <Page className={classNames('', {}, [className])}>
+        <Page data-testid="ProfilePage" className={classNames('', {}, [className])}>
             <VStack gap="16" align="stretch" max>
                 <EditableProfileCard id={id} />
             </VStack>

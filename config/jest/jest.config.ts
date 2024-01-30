@@ -43,8 +43,8 @@ export default {
     },
     reporters: [
         'default',
-        ['jest-html-reporters', {
-            publicPath: '<rootDir>/reports/unit',
+        ['./node_modules/jest-html-reporter', {
+            outputPath: '<rootDir>/reports/unit',
             filename: 'report.html',
             // openReport: true,
             inlineSource: true,

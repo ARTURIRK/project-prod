@@ -15,8 +15,20 @@ export default {
 const Template: ComponentStory<typeof NotificationItem> = (args) => <NotificationItem {...args} />;
 
 export const Normal = Template.bind({});
-Normal.args = {};
+Normal.args = {
+    notification: {
+        title: 'Уведомление',
+        description: 'поесть',
+        id: '12',
+    },
+};
 
 export const Dark = Template.bind({});
-Dark.args = {};
+Dark.args = {
+    notification: {
+        title: 'Уведомление',
+        description: 'поесть',
+        id: '12',
+    },
+};
 Dark.decorators = [ThemeDecorator(Theme.DARK)];

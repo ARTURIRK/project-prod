@@ -29,6 +29,7 @@ export const AvatarDropdown = memo(({ className } :Props) => {
 
     return (
         <Dropdown
+            className={className}
             direction="bottom left"
             items={[...(isAdmin || isModerator ? [{
                 content: t('Админка'),

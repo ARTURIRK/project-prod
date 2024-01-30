@@ -62,13 +62,3 @@ Rated.parameters = {
         },
     ],
 };
-export const Dark = Template.bind({});
-Dark.args = {
-    articleId: '1',
-
-};
-Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
-    user: {
-        authData: { id: '1' },
-    },
-})];

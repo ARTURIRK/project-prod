@@ -6,10 +6,10 @@
   "scripts": {
     "start": "webpack serve --env port=3000",
     "start:vite": "vite",
-    "start:dev:server": "node ./json-server/index.js",
     "start:dev": "concurrently \"npm start\" \"npm run start:dev:server\"",
     "start:dev:vite": "concurrently \"npm run start:vite\" \"npm run start:dev:server\"",
-    "build:prod": "webpack  --env mode=production apiUrl=https://production-project-server-sooty-one.vercel.app",
+    "start:dev:server": "node ./json-server/index.js",
+    "build:prod": "webpack  --env mode=production apiUrl=https://production-project-server.vercel.app",
     "build:dev": "webpack  --env mode=development",
     "lint:ts": "eslint \"**/*.{ts,tsx}\"",
     "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
@@ -26,7 +26,7 @@
     "storybook:build": "build-storybook -c ./config/storybook",
     "prepare": "husky install",
     "generate:slice": "node ./scripts/createSlice/index.js",
-    "postinstall": "rm -rf ./node_modules/.cache"
+    "postinstall": "node ./scripts/clear-cache.js"
   },
   "keywords": [],
   "author": "",

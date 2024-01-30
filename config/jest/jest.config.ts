@@ -43,10 +43,11 @@ export default {
     },
     reporters: [
         'default',
-        ['./node_modules/jest-html-reporter', {
-            outputPath: '<rootDir>/reports/unit',
+        ['jest-html-reporters', {
+            publicPath: '<rootDir>/reports/unit',
             filename: 'report.html',
-            openReport: true,
+            // openReport: true,
+            inlineSource: true,
         }],
     ],
     // Indicates whether the coverage information should be collected while executing the test

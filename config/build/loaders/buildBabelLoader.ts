@@ -1,10 +1,11 @@
-import babelRemovePropsPlugin from '../../babel/babelRemovePropsPlugin';
 import { BuildOptions } from '../types/config';
+import babelRemovePropsPlugin from '../../babel/babelRemovePropsPlugin';
 
-interface buildBabelLoaderProps extends BuildOptions {
+interface BuildBabelLoaderProps extends BuildOptions {
     isTsx?: boolean;
 }
-export function buildBabelLoader({ isDev, isTsx }: buildBabelLoaderProps) {
+
+export function buildBabelLoader({ isDev, isTsx }: BuildBabelLoaderProps) {
     const isProd = !isDev;
     return {
         test: isTsx ? /\.(jsx|tsx)$/ : /\.(js|ts)$/,
@@ -15,9 +16,12 @@ export function buildBabelLoader({ isDev, isTsx }: buildBabelLoaderProps) {
                 cacheDirectory: true,
                 presets: ['@babel/preset-env'],
                 plugins: [
-                    ['@babel/plugin-transform-typescript', {
-                        isTsx,
-                    }],
+                    [
+                        '@babel/plugin-transform-typescript',
+                        {
+                            isTsx,
+                        },
+                    ],
                     '@babel/plugin-transform-runtime',
                     isTsx && isProd && [
                         babelRemovePropsPlugin,

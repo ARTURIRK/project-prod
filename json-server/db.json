@@ -661,6 +661,15 @@
         "USER"
       ],
       "avatar": "https://w.forfun.com/fetch/b4/b48a66b3c4ea0107be482a87f1e50fb8.jpeg"
+    },
+    {
+      "id": "3",
+      "username": "testuser",
+      "password": "123",
+      "roles": [
+        "ADMIN"
+      ],
+      "avatar": "https://s0.rbk.ru/v6_top_pics/media/img/7/19/756752350085197.webp"
     }
   ],
   "profile": [

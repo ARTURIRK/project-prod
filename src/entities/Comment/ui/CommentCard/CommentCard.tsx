@@ -30,7 +30,7 @@ export function CommentCard({ className, comment, isLoading }: Props) {
         return null;
     }
     return (
-        <VStack gap="8" className={classNames(cls.CommentCard, {}, [className])}>
+        <VStack gap="8" className={classNames(cls.CommentCard, {}, [className])} data-testid="CommentCard.Content">
             <AppLink to={getRouteProfile(comment.user.id)}>
                 {comment.user.avatar && <Avatar size={30} src={comment.user.avatar} />}
                 <Text title={comment.user.username} />

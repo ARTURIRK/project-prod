@@ -28,4 +28,11 @@ describe('Пользователь заходит на страницу стат
         cy.setRate(4, 'feedback');
         cy.get('[data-selected=true]').should('have.length', 4);
     });
+    it('И ставит оценку (стабы)', () => {
+        cy.intercept('GET', '**/articles/*', { fixture: 'article_details.json' });
+        cy.getByTestId('ArticleDetails.Info');
+        cy.getByTestId('RatingCard').scrollIntoView();
+        cy.setRate(4, 'feedback');
+        cy.get('[data-selected=true]').should('have.length', 4);
+    });
 });

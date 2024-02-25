@@ -9,7 +9,7 @@ import cls from './ViewSelector.module.scss';
 
 interface Props {
     className?: string;
-    view: ArticleView,
+    view: ArticleView;
     onViewClick?: (view: ArticleView) => void;
 }
 
@@ -41,7 +41,9 @@ export const ViewSelector = memo((props: Props) => {
                 >
                     <Icon
                         Svg={viewType.icon}
-                        className={classNames('', { [cls.notSelected]: viewType.view !== view })}
+                        className={classNames('', {
+                            [cls.notSelected]: viewType.view !== view,
+                        })}
                     />
                 </Button>
             ))}

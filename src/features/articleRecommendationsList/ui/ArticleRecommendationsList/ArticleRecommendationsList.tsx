@@ -13,12 +13,20 @@ interface Props {
 export const ArticleRecommendationsList = memo((props: Props) => {
     const { className } = props;
     const { t } = useTranslation();
-    const { isLoading, data: articlesList, error } = useArticleRecommendationsList(3);
+    const {
+        isLoading,
+        data: articlesList,
+        error,
+    } = useArticleRecommendationsList(3);
     if (isLoading || error || !articlesList) {
         return null;
     }
     return (
-        <VStack data-testid="ArticleRecommendationsList" gap="8" className={classNames('', {}, [className])}>
+        <VStack
+            data-testid="ArticleRecommendationsList"
+            gap="8"
+            className={classNames('', {}, [className])}
+        >
             <Text
                 size={TextSize.L}
                 title={t('Рекомендуем')}

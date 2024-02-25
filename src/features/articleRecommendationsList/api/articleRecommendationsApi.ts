@@ -8,11 +8,11 @@ const recommgendationsApi = rtkApi.injectEndpoints({
                 url: '/articles',
                 params: {
                     _limit: limit,
-
                 },
             }),
         }),
     }),
     overrideExisting: false,
 });
-export const useArticleRecommendationsList = recommgendationsApi.useGetArticleRecommendationsListQuery;
+export const useArticleRecommendationsList =
+    recommgendationsApi.useGetArticleRecommendationsListQuery;

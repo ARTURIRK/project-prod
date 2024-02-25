@@ -4,7 +4,10 @@ import { ArticleRecommendationsList } from '@/features/articleRecommendationsLis
 import { ArticleRating } from '@/features/articleRating';
 import { ArticleDetails } from '@/entities/Article';
 import { Page } from '@/widgets/Page';
-import { DynamicModuleLoader, type ReducersList } from '@/shared/lib/components';
+import {
+    DynamicModuleLoader,
+    type ReducersList,
+} from '@/shared/lib/components';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { VStack } from '@/shared/ui/Stack';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
@@ -13,29 +16,36 @@ import { articleDetailsPageReducer } from '../../model/slices';
 import cls from './ArticleDetailsPage.module.scss';
 
 interface Props {
- className?: string;
+    className?: string;
 }
 const reducers: ReducersList = {
     articleDetailsPage: articleDetailsPageReducer,
 };
-const ArticleDetailsPage = (({ className }: Props) => {
-    const { id } = useParams<{id: string}>();
+const ArticleDetailsPage = ({ className }: Props) => {
+    const { id } = useParams<{ id: string }>();
     if (!id) {
         return null;
     }
     return (
         <DynamicModuleLoader reducers={reducers}>
-            <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-                <VStack max gap="32">
+            <Page
+                className={classNames(cls.ArticleDetailsPage, {}, [className])}
+            >
+                <VStack
+                    max
+                    gap="32"
+                >
                     <ArticleDetailsPageHeader />
                     <ArticleDetails id={id} />
                     <ArticleRating articleId={id} />
-                    <ArticleRecommendationsList className={cls.recommendations} />
+                    <ArticleRecommendationsList
+                        className={cls.recommendations}
+                    />
                     <ArticleDetailsComments id={id} />
                 </VStack>
             </Page>
         </DynamicModuleLoader>
     );
-});
+};
 
 export default memo(ArticleDetailsPage);

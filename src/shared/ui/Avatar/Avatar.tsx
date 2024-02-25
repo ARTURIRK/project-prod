@@ -8,21 +8,41 @@ import { Skeleton } from '../Skeleton';
 
 interface Props {
     fallbackInverted?: boolean;
- className?: string;
- src?: string;
- size?: number;
- alt?: string
+    className?: string;
+    src?: string;
+    size?: number;
+    alt?: string;
 }
 
 export function Avatar({
-    className, src, size = 100, alt, fallbackInverted,
+    className,
+    src,
+    size = 100,
+    alt,
+    fallbackInverted,
 }: Props) {
-    const styles = useMemo<CSSProperties>(() => ({
-        width: size,
-        height: size,
-    }), [size]);
-    const errorFallback = <Icon inverted={fallbackInverted} width={size} height={size} Svg={AvatarIcon} />;
-    const fallback = <Skeleton width={size} height={size} border="50%" />;
+    const styles = useMemo<CSSProperties>(
+        () => ({
+            width: size,
+            height: size,
+        }),
+        [size],
+    );
+    const errorFallback = (
+        <Icon
+            inverted={fallbackInverted}
+            width={size}
+            height={size}
+            Svg={AvatarIcon}
+        />
+    );
+    const fallback = (
+        <Skeleton
+            width={size}
+            height={size}
+            border="50%"
+        />
+    );
     return (
         <AppImage
             className={classNames(cls.Avatar, {}, [className])}

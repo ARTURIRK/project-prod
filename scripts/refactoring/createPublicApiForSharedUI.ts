@@ -23,7 +23,14 @@ componentsDirs?.forEach((directory) => {
     }
 });
 function isAbsolute(value: string) {
-    const layers = ['app', 'shared', 'entities', 'features', 'widgets', 'pages'];
+    const layers = [
+        'app',
+        'shared',
+        'entities',
+        'features',
+        'widgets',
+        'pages',
+    ];
     return layers.some((el) => value.startsWith(el));
 }
 files.forEach((sourceFile) => {

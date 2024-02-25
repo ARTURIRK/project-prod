@@ -1,7 +1,10 @@
 import { AxiosInstance } from 'axios';
 import { CombinedState } from 'redux';
 import {
-    AnyAction, EnhancedStore, Reducer, ReducersMapObject,
+    AnyAction,
+    EnhancedStore,
+    Reducer,
+    ReducersMapObject,
 } from '@reduxjs/toolkit';
 import { ArticlesPageSchema } from '@/pages/ArticlesPage';
 import type { UserSchema } from '@/entities/User';
@@ -22,15 +25,18 @@ export interface StateSchema {
     loginForm?: LoginSchema;
     articleDetails?: ArticleDetailsSchema;
     addCommentForm?: AddCommentFormSchema;
-    articlesPage?: ArticlesPageSchema
-    articleDetailsPage?:ArticleDetailsPageSchema;
+    articlesPage?: ArticlesPageSchema;
+    articleDetailsPage?: ArticleDetailsPageSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
 export type MountedReducers = OptionalRecord<StateSchemaKey, boolean>;
 export interface ReducerManager {
     getReducerMap: () => ReducersMapObject<StateSchema>;
-    reduce: (state: StateSchema, action: AnyAction) => CombinedState<StateSchema>;
+    reduce: (
+        state: StateSchema,
+        action: AnyAction,
+    ) => CombinedState<StateSchema>;
     add: (key: StateSchemaKey, reducer: Reducer) => void;
     remove: (key: StateSchemaKey) => void;
 }
@@ -42,7 +48,7 @@ export interface ThunkExtraArg {
     api: AxiosInstance;
 }
 export interface ThunkConfig<T> {
-    rejectedValue: T,
+    rejectedValue: T;
     extra: ThunkExtraArg;
     state: StateSchema;
 }

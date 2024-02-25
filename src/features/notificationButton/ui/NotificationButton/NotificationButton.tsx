@@ -22,21 +22,32 @@ export const NotificationButton = memo(({ className }: Props) => {
         setOpenDrawer(false);
     }, []);
     const trigger = (
-        <Button onClick={onOpenDrawer} theme={ButtonTheme.CLEAR}>
-            <Icon Svg={BellIcon} inverted />
+        <Button
+            onClick={onOpenDrawer}
+            theme={ButtonTheme.CLEAR}
+        >
+            <Icon
+                Svg={BellIcon}
+                inverted
+            />
         </Button>
     );
     return (
         <>
             <MobileView>
                 {trigger}
-                <Drawer isOpen={isOpenDrawer} onClose={onCloseDrawer}>
+                <Drawer
+                    isOpen={isOpenDrawer}
+                    onClose={onCloseDrawer}
+                >
                     <NotificationList />
                 </Drawer>
             </MobileView>
             <BrowserView>
                 <Popover
-                    className={classNames(cls.NotificationButton, {}, [className])}
+                    className={classNames(cls.NotificationButton, {}, [
+                        className,
+                    ])}
                     direction="bottom left"
                     trigger={trigger}
                 >

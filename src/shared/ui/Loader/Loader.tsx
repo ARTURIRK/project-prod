@@ -6,11 +6,11 @@ interface LoaderProps {
     className?: string;
 }
 
-export const Loader = memo((({ className }: LoaderProps) => (
+export const Loader = memo(({ className }: LoaderProps) => (
     <div className={classNames('lds-ellipsis', {}, [className])}>
         <div />
         <div />
         <div />
         <div />
     </div>
-)));
+));

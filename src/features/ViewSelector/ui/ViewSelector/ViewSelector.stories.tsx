@@ -11,7 +11,9 @@ export default {
     },
 } as ComponentMeta<typeof ViewSelector>;
 
-const Template: ComponentStory<typeof ViewSelector> = (args) => <ViewSelector {...args} />;
+const Template: ComponentStory<typeof ViewSelector> = (args) => (
+    <ViewSelector {...args} />
+);
 
 export const Normal = Template.bind({});
 Normal.args = {};

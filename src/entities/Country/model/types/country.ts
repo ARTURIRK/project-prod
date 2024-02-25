@@ -1,5 +1,5 @@
 export enum Country {
-  RUS = 'Russia',
-  BEL = 'Belorussia',
-  KZH = 'Kazahstan',
+    RUS = 'Russia',
+    BEL = 'Belorussia',
+    KZH = 'Kazahstan',
 }

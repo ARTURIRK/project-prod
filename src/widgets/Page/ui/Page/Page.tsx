@@ -1,9 +1,10 @@
-import {
-    MutableRefObject, ReactNode, UIEvent, useRef,
-} from 'react';
+import { MutableRefObject, ReactNode, UIEvent, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { getScrollPositionByPath, scrollSaverActions } from '@/features/scrollSaver';
+import {
+    getScrollPositionByPath,
+    scrollSaverActions,
+} from '@/features/scrollSaver';
 import { StateSchema } from '@/app/providers/StoreProvider';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
@@ -14,9 +15,9 @@ import { TestProps } from '@/shared/types';
 import cls from './Page.module.scss';
 
 interface Props extends TestProps {
- className?: string;
- children: ReactNode;
- onScrollEnd?: () => void;
+    className?: string;
+    children: ReactNode;
+    onScrollEnd?: () => void;
 }
 
 export const Page = (props: Props) => {
@@ -25,9 +26,16 @@ export const Page = (props: Props) => {
     const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
     const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
     const dispatch = useAppDispatch();
-    const scrollPosition = useSelector((state: StateSchema) => getScrollPositionByPath(state, pathname));
+    const scrollPosition = useSelector((state: StateSchema) =>
+        getScrollPositionByPath(state, pathname),
+    );
     const onScrollHandler = useThrottle((e: UIEvent<HTMLDivElement>) => {
-        dispatch(scrollSaverActions.setScrollPosition({ path: pathname, position: e.currentTarget.scrollTop }));
+        dispatch(
+            scrollSaverActions.setScrollPosition({
+                path: pathname,
+                position: e.currentTarget.scrollTop,
+            }),
+        );
     }, 500);
     useInfiniteScroll({
         callback: onScrollEnd,
@@ -45,7 +53,12 @@ export const Page = (props: Props) => {
             className={classNames(cls.Page, {}, [className])}
         >
             {children}
-            {onScrollEnd ? <div className={cls.trigger} ref={triggerRef} /> : null}
+            {onScrollEnd ? (
+                <div
+                    className={cls.trigger}
+                    ref={triggerRef}
+                />
+            ) : null}
         </main>
     );
 };

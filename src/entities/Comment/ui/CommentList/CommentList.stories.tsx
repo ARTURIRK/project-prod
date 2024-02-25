@@ -12,7 +12,9 @@ export default {
     },
 } as ComponentMeta<typeof CommentList>;
 
-const Template: ComponentStory<typeof CommentList> = (args) => <CommentList {...args} />;
+const Template: ComponentStory<typeof CommentList> = (args) => (
+    <CommentList {...args} />
+);
 
 export const Normal = Template.bind({});
 Normal.args = {
@@ -20,12 +22,20 @@ Normal.args = {
         {
             id: '1',
             text: 'hello world',
-            user: { id: '1', username: 'Artur', avatar: 'https://w.forfun.com/fetch/b4/b48a66b3c4ea0107be482a87f1e50fb8.jpeg' },
+            user: {
+                id: '1',
+                username: 'Artur',
+                avatar: 'https://w.forfun.com/fetch/b4/b48a66b3c4ea0107be482a87f1e50fb8.jpeg',
+            },
         },
         {
             id: '2',
             text: 'hello world!!!',
-            user: { id: '1', username: 'Artur', avatar: 'https://w.forfun.com/fetch/b4/b48a66b3c4ea0107be482a87f1e50fb8.jpeg' },
+            user: {
+                id: '1',
+                username: 'Artur',
+                avatar: 'https://w.forfun.com/fetch/b4/b48a66b3c4ea0107be482a87f1e50fb8.jpeg',
+            },
         },
     ],
 };
@@ -35,12 +45,20 @@ Loading.args = {
         {
             id: '1',
             text: 'hello world',
-            user: { id: '1', username: 'Artur', avatar: 'https://w.forfun.com/fetch/b4/b48a66b3c4ea0107be482a87f1e50fb8.jpeg' },
+            user: {
+                id: '1',
+                username: 'Artur',
+                avatar: 'https://w.forfun.com/fetch/b4/b48a66b3c4ea0107be482a87f1e50fb8.jpeg',
+            },
         },
         {
             id: '2',
             text: 'hello world!!!',
-            user: { id: '1', username: 'Artur', avatar: 'https://w.forfun.com/fetch/b4/b48a66b3c4ea0107be482a87f1e50fb8.jpeg' },
+            user: {
+                id: '1',
+                username: 'Artur',
+                avatar: 'https://w.forfun.com/fetch/b4/b48a66b3c4ea0107be482a87f1e50fb8.jpeg',
+            },
         },
     ],
     isLoading: true,
@@ -52,12 +70,20 @@ Dark.args = {
         {
             id: '1',
             text: 'hello world',
-            user: { id: '1', username: 'Artur', avatar: 'https://w.forfun.com/fetch/b4/b48a66b3c4ea0107be482a87f1e50fb8.jpeg' },
+            user: {
+                id: '1',
+                username: 'Artur',
+                avatar: 'https://w.forfun.com/fetch/b4/b48a66b3c4ea0107be482a87f1e50fb8.jpeg',
+            },
         },
         {
             id: '2',
             text: 'hello world!!!',
-            user: { id: '1', username: 'Artur', avatar: 'https://w.forfun.com/fetch/b4/b48a66b3c4ea0107be482a87f1e50fb8.jpeg' },
+            user: {
+                id: '1',
+                username: 'Artur',
+                avatar: 'https://w.forfun.com/fetch/b4/b48a66b3c4ea0107be482a87f1e50fb8.jpeg',
+            },
         },
     ],
 };

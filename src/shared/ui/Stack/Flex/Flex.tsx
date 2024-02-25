@@ -3,19 +3,28 @@ import { Mods, classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Flex.module.scss';
 
 export type FlexJustify = 'start' | 'center' | 'end' | 'around' | 'between';
-export type FlexAlign = 'start' | 'center' | 'end' | 'around' | 'between' | 'stretch';
+export type FlexAlign =
+    | 'start'
+    | 'center'
+    | 'end'
+    | 'around'
+    | 'between'
+    | 'stretch';
 export type FlexDirection = 'row' | 'column' | 'row-reverse' | 'column-reverse';
 export type FlexGap = '4' | '8' | '16' | '32' | '64';
 
-type DivProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+type DivProps = DetailedHTMLProps<
+    HTMLAttributes<HTMLDivElement>,
+    HTMLDivElement
+>;
 export interface FlexProps extends DivProps {
- className?: string;
- children: ReactNode;
- justify?: FlexJustify;
- align?: FlexAlign;
- direction?: FlexDirection;
- gap?: FlexGap;
- max?: boolean;
+    className?: string;
+    children: ReactNode;
+    justify?: FlexJustify;
+    align?: FlexAlign;
+    direction?: FlexDirection;
+    gap?: FlexGap;
+    max?: boolean;
 }
 const justifyClasses: Record<FlexJustify, string> = {
     start: cls.justifyStart,
@@ -67,7 +76,10 @@ export const Flex = ({
         [cls.max]: max,
     };
     return (
-        <div className={classNames(cls.Flex, mods, classes)} {...otherProps}>
+        <div
+            className={classNames(cls.Flex, mods, classes)}
+            {...otherProps}
+        >
             {children}
         </div>
     );

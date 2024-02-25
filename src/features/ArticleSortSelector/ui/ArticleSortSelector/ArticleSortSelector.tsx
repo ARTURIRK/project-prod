@@ -6,18 +6,22 @@ import { Select, SelectOption } from '@/shared/ui/Select';
 import cls from './ArticleSortSelector.module.scss';
 
 interface Props {
- className?: string;
- sort: ArticleSortField;
- order: SortOrder;
- onChangeSort: (sort: ArticleSortField) => void;
- onChangeOrder: (order: SortOrder) => void;
+    className?: string;
+    sort: ArticleSortField;
+    order: SortOrder;
+    onChangeSort: (sort: ArticleSortField) => void;
+    onChangeOrder: (order: SortOrder) => void;
 }
 
 export function ArticleSortSelector({
-    className, sort, order, onChangeSort, onChangeOrder,
+    className,
+    sort,
+    order,
+    onChangeSort,
+    onChangeOrder,
 }: Props) {
     const { t } = useTranslation();
-    const orderOptions : SelectOption<SortOrder>[] = [
+    const orderOptions: SelectOption<SortOrder>[] = [
         {
             value: 'asc',
             content: t('возрастанию'),
@@ -27,7 +31,7 @@ export function ArticleSortSelector({
             content: t('убыванию'),
         },
     ];
-    const sortFieldOptions : SelectOption<ArticleSortField>[] = [
+    const sortFieldOptions: SelectOption<ArticleSortField>[] = [
         {
             value: ArticleSortField.CREATED,
             content: t('дате создания'),

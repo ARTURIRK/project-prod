@@ -3,12 +3,13 @@ import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import {
-    Profile, ProfileCard,
-} from '@/entities/Profile';
+import { Profile, ProfileCard } from '@/entities/Profile';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect';
 import { Text, TextTheme } from '@/shared/ui/Text';
-import { DynamicModuleLoader, type ReducersList } from '@/shared/lib/components';
+import {
+    DynamicModuleLoader,
+    type ReducersList,
+} from '@/shared/lib/components';
 import { VStack } from '@/shared/ui/Stack';
 import { ValidateProfileError } from '../../model/consts/consts';
 import { getProfileInfo } from '../../model/selectors/getProfileInfo';
@@ -29,38 +30,53 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
     const dispatch = useAppDispatch();
     const profile = useSelector(getProfileInfo);
     const validateErrorTranslations = {
-        [ValidateProfileError.INCORRECT_USER_DATA]: t('Не указаны имя или фамилия'),
+        [ValidateProfileError.INCORRECT_USER_DATA]: t(
+            'Не указаны имя или фамилия',
+        ),
         [ValidateProfileError.SERVER_ERROR]: t('Ошбика серера'),
         [ValidateProfileError.INCORRECT_AGE]: t('Некорректно указан возраст'),
-        [ValidateProfileError.INCORRECT_COUNTRY]: t('Некорректно указана страна'),
+        [ValidateProfileError.INCORRECT_COUNTRY]: t(
+            'Некорректно указана страна',
+        ),
         [ValidateProfileError.NO_DATA]: t('Данные не указаны'),
     };
     useInitialEffect(() => {
-        if (id) { dispatch(fetchProfileData(id)); }
-    });
-    const onChangeProfileInfo = useCallback((key: keyof Profile, value: Profile[keyof Profile]) => {
-        if (key === 'age') {
-            const newValue = (value as string)?.replace(/\D+/, '');
-            dispatch(profileActions.updateProfile({ age: Number(newValue) || 0 }));
-        } else {
-            dispatch(profileActions.updateProfile({ [key]: value || '' }));
+        if (id) {
+            dispatch(fetchProfileData(id));
         }
-    }, [dispatch]);
+    });
+    const onChangeProfileInfo = useCallback(
+        (key: keyof Profile, value: Profile[keyof Profile]) => {
+            if (key === 'age') {
+                const newValue = (value as string)?.replace(/\D+/, '');
+                dispatch(
+                    profileActions.updateProfile({
+                        age: Number(newValue) || 0,
+                    }),
+                );
+            } else {
+                dispatch(profileActions.updateProfile({ [key]: value || '' }));
+            }
+        },
+        [dispatch],
+    );
     return (
         <DynamicModuleLoader reducers={reducers}>
-            <VStack gap="16" max className={classNames('', {}, [className])}>
+            <VStack
+                gap="16"
+                max
+                className={classNames('', {}, [className])}
+            >
                 <EditableProfileCardHeader />
-                {
-                    profile?.validateError?.length
-                    && profile?.validateError.map((el) => (
+                {profile?.validateError?.length &&
+                    profile?.validateError.map((el) => (
                         <Text
                             key={el}
                             theme={TextTheme.ERROR}
                             text={validateErrorTranslations[el]}
                             data-testid="EditableProfileCard.Error"
                         />
-                    ))
-                }
+                    ))}
                 <ProfileCard
                     onChangeProfileInfo={onChangeProfileInfo}
                     isLoading={profile?.isLoading}

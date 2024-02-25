@@ -15,9 +15,7 @@ interface Props {
     onTabClick: (tab: TabItem) => void;
 }
 
-export const Tabs = memo(({
-    className, tabs, onTabClick, value,
-}: Props) => {
+export const Tabs = memo(({ className, tabs, onTabClick, value }: Props) => {
     const clickHandle = (tab: TabItem) => () => {
         onTabClick(tab);
     };
@@ -26,7 +24,11 @@ export const Tabs = memo(({
         <div className={classNames(cls.Tabs, {}, [className])}>
             {tabs.map((tab) => (
                 <Card
-                    theme={tab.value === value ? CardTheme.NORMAL : CardTheme.OUTLINED}
+                    theme={
+                        tab.value === value
+                            ? CardTheme.NORMAL
+                            : CardTheme.OUTLINED
+                    }
                     className={cls.tab}
                     key={tab.value}
                     onClick={clickHandle(tab)}

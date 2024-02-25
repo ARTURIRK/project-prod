@@ -12,8 +12,7 @@ describe('getLoginError.test', () => {
     });
     test('empty', () => {
         const state: DeepPartial<StateSchema> = {
-            loginForm: {
-            },
+            loginForm: {},
         };
         expect(getLoginError(state as StateSchema)).toEqual(undefined);
     });

@@ -6,28 +6,25 @@ export const fetchCommentsByArticleId = createAsyncThunk<
     IComment[],
     string | undefined,
     ThunkConfig<string>
-    >(
-        'articleDetails/fetchCommentsByArticleId',
-        async (articleId, thunkApi) => {
-            const { extra, rejectWithValue } = thunkApi;
-            if (articleId) {
-                rejectWithValue('error');
-            }
-            try {
-                const response = await extra.api.get<IComment[]>('/comments', {
-                    params: {
-                        articleId,
-                        _expand: 'user',
-                    },
-                });
+>('articleDetails/fetchCommentsByArticleId', async (articleId, thunkApi) => {
+    const { extra, rejectWithValue } = thunkApi;
+    if (articleId) {
+        rejectWithValue('error');
+    }
+    try {
+        const response = await extra.api.get<IComment[]>('/comments', {
+            params: {
+                articleId,
+                _expand: 'user',
+            },
+        });
 
-                if (!response.data) {
-                    throw new Error();
-                }
+        if (!response.data) {
+            throw new Error();
+        }
 
-                return response.data;
-            } catch (e) {
-                return rejectWithValue('error');
-            }
-        },
-    );
+        return response.data;
+    } catch (e) {
+        return rejectWithValue('error');
+    }
+});

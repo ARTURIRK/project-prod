@@ -14,5 +14,10 @@ const Template: ComponentStory<typeof Card> = (args) => <Card {...args} />;
 
 export const Normal = Template.bind({});
 Normal.args = {
-    children: <Text title="test" text="text text" />,
+    children: (
+        <Text
+            title="test"
+            text="text text"
+        />
+    ),
 };

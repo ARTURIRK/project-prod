@@ -12,50 +12,51 @@ export default {
     },
 } as ComponentMeta<typeof ArticleRating>;
 
-const Template: ComponentStory<typeof ArticleRating> = (props) => <ArticleRating {...props} />;
+const Template: ComponentStory<typeof ArticleRating> = (props) => (
+    <ArticleRating {...props} />
+);
 
 export const Default = Template.bind({});
 Default.args = {
     articleId: '1',
-
 };
-Default.decorators = [ThemeDecorator(Theme.LIGHT), StoreDecorator({
-    user: {
-        authData: { id: '1' },
-    },
-})];
+Default.decorators = [
+    ThemeDecorator(Theme.LIGHT),
+    StoreDecorator({
+        user: {
+            authData: { id: '1' },
+        },
+    }),
+];
 Default.parameters = {
     mockData: [
         {
             url: `${__API__}/article-ratings?userId=1&articleId=1`,
             method: 'GET',
             status: 200,
-            response: [
-
-            ],
+            response: [],
         },
     ],
 };
 export const Rated = Template.bind({});
 Rated.args = {
     articleId: '1',
-
 };
-Rated.decorators = [ThemeDecorator(Theme.LIGHT), StoreDecorator({
-    user: {
-        authData: { id: '1' },
-    },
-})];
+Rated.decorators = [
+    ThemeDecorator(Theme.LIGHT),
+    StoreDecorator({
+        user: {
+            authData: { id: '1' },
+        },
+    }),
+];
 Rated.parameters = {
     mockData: [
         {
             url: `${__API__}/article-ratings?userId=1&articleId=1`,
             method: 'GET',
             status: 200,
-            response: [
-                { rate: 4 },
-
-            ],
+            response: [{ rate: 4 }],
         },
     ],
 };

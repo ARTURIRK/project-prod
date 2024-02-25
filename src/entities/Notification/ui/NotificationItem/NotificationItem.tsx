@@ -6,19 +6,30 @@ import type { Notification } from '../../models/types/notifications';
 import cls from './NotificationItem.module.scss';
 
 interface Props {
- className?: string;
- notification: Notification
+    className?: string;
+    notification: Notification;
 }
 
 export const NotificationItem = memo(({ className, notification }: Props) => {
     const content = (
-        <Card theme={CardTheme.OUTLINED} className={classNames(cls.NotificationItem, {}, [className])}>
-            <Text title={notification.title} text={notification.description} />
+        <Card
+            theme={CardTheme.OUTLINED}
+            className={classNames(cls.NotificationItem, {}, [className])}
+        >
+            <Text
+                title={notification.title}
+                text={notification.description}
+            />
         </Card>
     );
     if (notification.href) {
         return (
-            <a className={cls.link} target="_blank" href={notification.href} rel="noreferrer">
+            <a
+                className={cls.link}
+                target="_blank"
+                href={notification.href}
+                rel="noreferrer"
+            >
                 {content}
             </a>
         );

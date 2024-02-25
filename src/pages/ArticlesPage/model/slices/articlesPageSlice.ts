@@ -5,7 +5,10 @@ import {
 } from '@reduxjs/toolkit';
 import { StateSchema } from '@/app/providers/StoreProvider';
 import {
-    Article, ArticleView, ArticleSortField, ArticleType,
+    Article,
+    ArticleView,
+    ArticleSortField,
+    ArticleType,
 } from '@/entities/Article';
 import { ARTICLES_VIEW_LOCALSTORAGE_KEY } from '@/shared/const';
 import { SortOrder } from '@/shared/types';
@@ -57,7 +60,10 @@ export const articlePageSlice = createSlice({
             state.type = payload;
         },
         initState: (state) => {
-            const view = localStorage.getItem(ARTICLES_VIEW_LOCALSTORAGE_KEY) as ArticleView || ArticleView.SMALL;
+            const view =
+                (localStorage.getItem(
+                    ARTICLES_VIEW_LOCALSTORAGE_KEY,
+                ) as ArticleView) || ArticleView.SMALL;
             state.view = view;
             state.limit = view === ArticleView.BIG ? 4 : 9;
             state.inited = true;
@@ -72,10 +78,7 @@ export const articlePageSlice = createSlice({
                     articlesAdapter.removeAll(state);
                 }
             })
-            .addCase(fetchArticlesList.fulfilled, (
-                state,
-                action,
-            ) => {
+            .addCase(fetchArticlesList.fulfilled, (state, action) => {
                 state.isLoading = false;
 
                 state.hasMore = action.payload.length >= state.limit;
@@ -90,10 +93,7 @@ export const articlePageSlice = createSlice({
                 state.error = action.payload as string;
             });
     },
-
 });
 
-export const {
-    reducer: articlesPageReducer,
-    actions: articlesPageActions,
-} = articlePageSlice;
+export const { reducer: articlesPageReducer, actions: articlesPageActions } =
+    articlePageSlice;

@@ -5,14 +5,21 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { VStack } from '@/shared/ui/Stack';
 
 interface Props {
- className?: string;
+    className?: string;
 }
 
 export default function ProfilePage({ className }: Props) {
-    const { id } = useParams<{id: string}>();
+    const { id } = useParams<{ id: string }>();
     return (
-        <Page data-testid="ProfilePage" className={classNames('', {}, [className])}>
-            <VStack gap="16" align="stretch" max>
+        <Page
+            data-testid="ProfilePage"
+            className={classNames('', {}, [className])}
+        >
+            <VStack
+                gap="16"
+                align="stretch"
+                max
+            >
                 <EditableProfileCard id={id} />
             </VStack>
         </Page>

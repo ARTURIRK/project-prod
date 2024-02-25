@@ -7,7 +7,7 @@ import cls from './NotificationList.module.scss';
 import { NotificationItem } from '../NotificationItem/NotificationItem';
 
 interface Props {
- className?: string;
+    className?: string;
 }
 
 export const NotificationList = memo(({ className }: Props) => {
@@ -21,20 +21,36 @@ export const NotificationList = memo(({ className }: Props) => {
                 max
                 className={classNames(cls.NotificationList, {}, [className])}
             >
-                <Skeleton width="100%" border="8px" height="80px" />
-                <Skeleton width="100%" border="8px" height="80px" />
-                <Skeleton width="100%" border="8px" height="80px" />
+                <Skeleton
+                    width="100%"
+                    border="8px"
+                    height="80px"
+                />
+                <Skeleton
+                    width="100%"
+                    border="8px"
+                    height="80px"
+                />
+                <Skeleton
+                    width="100%"
+                    border="8px"
+                    height="80px"
+                />
             </VStack>
         );
     }
     return (
-        <VStack gap="16" max className={classNames(cls.NotificationList, {}, [className])}>
-
-            {
-                data?.map((notification) => (
-                    <NotificationItem key={notification.id} notification={notification} />
-                ))
-            }
+        <VStack
+            gap="16"
+            max
+            className={classNames(cls.NotificationList, {}, [className])}
+        >
+            {data?.map((notification) => (
+                <NotificationItem
+                    key={notification.id}
+                    notification={notification}
+                />
+            ))}
         </VStack>
     );
 });

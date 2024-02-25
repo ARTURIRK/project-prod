@@ -9,7 +9,9 @@ import { ErrorBoundary } from './app/providers/ErrorBoundary';
 
 const container = document.getElementById('root');
 if (!container) {
-    throw new Error('Контейнер root не найден. Не удалось вмонитровать приложение');
+    throw new Error(
+        'Контейнер root не найден. Не удалось вмонитровать приложение',
+    );
 }
 const root = createRoot(container); // createRoot(container!) if you use TypeScript
 root.render(

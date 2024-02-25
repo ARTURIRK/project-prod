@@ -12,7 +12,9 @@ export default {
     },
 } as ComponentMeta<typeof NotificationList>;
 
-const Template: ComponentStory<typeof NotificationList> = () => <NotificationList />;
+const Template: ComponentStory<typeof NotificationList> = () => (
+    <NotificationList />
+);
 
 export const Normal = Template.bind({});
 Normal.args = {};
@@ -27,12 +29,14 @@ Normal.parameters = {
                 {
                     id: '1',
                     title: 'Уведомление',
-                    description: 'Пользователь Х поставил лайк под вашей статьей',
+                    description:
+                        'Пользователь Х поставил лайк под вашей статьей',
                 },
                 {
                     id: '3',
                     title: 'Уведомление',
-                    description: 'Пользователь Х написал комментарий под вашей статьей',
+                    description:
+                        'Пользователь Х написал комментарий под вашей статьей',
                 },
             ],
         },
@@ -52,12 +56,14 @@ Dark.parameters = {
                 {
                     id: '1',
                     title: 'Уведомление',
-                    description: 'Пользователь Х поставил лайк под вашей статьей',
+                    description:
+                        'Пользователь Х поставил лайк под вашей статьей',
                 },
                 {
                     id: '3',
                     title: 'Уведомление',
-                    description: 'Пользователь Х написал комментарий под вашей статьей',
+                    description:
+                        'Пользователь Х написал комментарий под вашей статьей',
                 },
             ],
         },

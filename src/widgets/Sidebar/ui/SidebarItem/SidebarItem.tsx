@@ -8,25 +8,21 @@ import { SidebarItemType } from '../../model/types/sidebar';
 import cls from './SidebarItem.module.scss';
 
 interface Props {
- item: SidebarItemType;
- collapsed?: boolean;
+    item: SidebarItemType;
+    collapsed?: boolean;
 }
 
 export const SidebarItem = memo(({ item, collapsed }: Props) => {
     const { t } = useTranslation();
     const isAuth = useSelector(getUserAuthData);
-    return (
-        (item.authOnly && !isAuth) ? null : (
-            <AppLink
-                theme={AppLinkTheme.SECONDARY}
-                to={item.path}
-                className={classNames(cls.item, { [cls.collapsed]: collapsed })}
-            >
-                <item.Icon className={cls.icon} />
-                <span className={cls.link}>
-                    {t(item.text)}
-                </span>
-            </AppLink>
-        )
+    return item.authOnly && !isAuth ? null : (
+        <AppLink
+            theme={AppLinkTheme.SECONDARY}
+            to={item.path}
+            className={classNames(cls.item, { [cls.collapsed]: collapsed })}
+        >
+            <item.Icon className={cls.icon} />
+            <span className={cls.link}>{t(item.text)}</span>
+        </AppLink>
     );
 });

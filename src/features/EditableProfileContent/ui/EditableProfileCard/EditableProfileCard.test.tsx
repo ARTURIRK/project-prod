@@ -8,7 +8,7 @@ import { $api } from '@/shared/api/api';
 import { profileReducer } from '../../model/slice/profileSlice';
 import { EditableProfileCard } from './EditableProfileCard';
 
-const profile : Profile = {
+const profile: Profile = {
     id: '1',
     firstName: 'Артаг',
     lastName: 'Цветаевич',
@@ -35,34 +35,64 @@ const options = {
 describe('EditableProfileCard', () => {
     test('Edit click test', async () => {
         componentRender(<EditableProfileCard id="1" />, options);
-        await userEvent.click(screen.getByTestId('EditableProfileCardHeader.Edit'));
-        expect(screen.getByTestId('EditableProfileCardHeader.Cancel')).toBeInTheDocument();
+        await userEvent.click(
+            screen.getByTestId('EditableProfileCardHeader.Edit'),
+        );
+        expect(
+            screen.getByTestId('EditableProfileCardHeader.Cancel'),
+        ).toBeInTheDocument();
     });
 
     test('check cancel action', async () => {
         componentRender(<EditableProfileCard id="1" />, options);
-        await userEvent.click(screen.getByTestId('EditableProfileCardHeader.Edit'));
+        await userEvent.click(
+            screen.getByTestId('EditableProfileCardHeader.Edit'),
+        );
         await userEvent.clear(screen.getByTestId('ProfileCard.FirstName'));
-        await userEvent.type(screen.getByTestId('ProfileCard.FirstName'), 'Artur');
-        expect(screen.getByTestId('ProfileCard.FirstName')).toHaveValue('Artur');
-        await userEvent.click(screen.getByTestId('EditableProfileCardHeader.Cancel'));
-        expect(screen.getByTestId('ProfileCard.FirstName')).toHaveValue('Артаг');
+        await userEvent.type(
+            screen.getByTestId('ProfileCard.FirstName'),
+            'Artur',
+        );
+        expect(screen.getByTestId('ProfileCard.FirstName')).toHaveValue(
+            'Artur',
+        );
+        await userEvent.click(
+            screen.getByTestId('EditableProfileCardHeader.Cancel'),
+        );
+        expect(screen.getByTestId('ProfileCard.FirstName')).toHaveValue(
+            'Артаг',
+        );
     });
     test('check error text', async () => {
         componentRender(<EditableProfileCard id="1" />, options);
-        await userEvent.click(screen.getByTestId('EditableProfileCardHeader.Edit'));
+        await userEvent.click(
+            screen.getByTestId('EditableProfileCardHeader.Edit'),
+        );
         await userEvent.clear(screen.getByTestId('ProfileCard.FirstName'));
-        await userEvent.click(screen.getByTestId('EditableProfileCardHeader.Save'));
-        expect(screen.getByTestId('EditableProfileCard.Error.Paragraph')).toBeInTheDocument();
-        expect(screen.getByTestId('EditableProfileCard.Error.Paragraph')).toHaveTextContent('Не указаны имя или фамилия');
+        await userEvent.click(
+            screen.getByTestId('EditableProfileCardHeader.Save'),
+        );
+        expect(
+            screen.getByTestId('EditableProfileCard.Error.Paragraph'),
+        ).toBeInTheDocument();
+        expect(
+            screen.getByTestId('EditableProfileCard.Error.Paragraph'),
+        ).toHaveTextContent('Не указаны имя или фамилия');
     });
     test('check put  request', async () => {
         const mockPutReq = jest.spyOn($api, 'put');
         componentRender(<EditableProfileCard id="1" />, options);
-        await userEvent.click(screen.getByTestId('EditableProfileCardHeader.Edit'));
+        await userEvent.click(
+            screen.getByTestId('EditableProfileCardHeader.Edit'),
+        );
         await userEvent.clear(screen.getByTestId('ProfileCard.FirstName'));
-        await userEvent.type(screen.getByTestId('ProfileCard.FirstName'), 'Arturio');
-        await userEvent.click(screen.getByTestId('EditableProfileCardHeader.Save'));
+        await userEvent.type(
+            screen.getByTestId('ProfileCard.FirstName'),
+            'Arturio',
+        );
+        await userEvent.click(
+            screen.getByTestId('EditableProfileCardHeader.Save'),
+        );
         expect(mockPutReq).toHaveBeenCalled();
     });
 });

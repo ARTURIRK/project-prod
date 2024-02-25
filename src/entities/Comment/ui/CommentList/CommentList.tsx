@@ -7,38 +7,44 @@ import { CommentCard } from '../CommentCard/CommentCard';
 import type { IComment } from '../../model/types/comment';
 
 interface Props {
- className?: string;
- comments?: IComment[];
- isLoading?: boolean;
+    className?: string;
+    comments?: IComment[];
+    isLoading?: boolean;
 }
 
 export const CommentList = memo(({ className, comments, isLoading }: Props) => {
     if (isLoading) {
         return (
-            <VStack gap="16" align="stretch" max className={classNames('', {}, [className])}>
-                <CommentCard
-                    isLoading={isLoading}
-                />
-                <CommentCard
-                    isLoading={isLoading}
-                />
-                <CommentCard
-                    isLoading={isLoading}
-                />
+            <VStack
+                gap="16"
+                align="stretch"
+                max
+                className={classNames('', {}, [className])}
+            >
+                <CommentCard isLoading={isLoading} />
+                <CommentCard isLoading={isLoading} />
+                <CommentCard isLoading={isLoading} />
             </VStack>
         );
     }
     return (
-        <VStack gap="16" align="stretch" max className={classNames('', {}, [className])}>
-            {comments?.length
-                ? comments.map((comment) => (
+        <VStack
+            gap="16"
+            align="stretch"
+            max
+            className={classNames('', {}, [className])}
+        >
+            {comments?.length ? (
+                comments.map((comment) => (
                     <CommentCard
                         key={comment.id}
                         isLoading={isLoading}
                         comment={comment}
                     />
                 ))
-                : <Text title={t('Комментариев нет')} /> }
+            ) : (
+                <Text title={t('Комментариев нет')} />
+            )}
         </VStack>
     );
 });

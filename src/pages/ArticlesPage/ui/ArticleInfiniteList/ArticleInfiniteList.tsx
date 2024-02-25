@@ -8,10 +8,14 @@ import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect';
 import { Text } from '@/shared/ui/Text';
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
 import { getArticles } from '../../model/slices/articlesPageSlice';
-import { getArticlesPageError, getArticlesPageLoading, getArticlesPageView } from '../../model/selectors/articlesPageSelector';
+import {
+    getArticlesPageError,
+    getArticlesPageLoading,
+    getArticlesPageView,
+} from '../../model/selectors/articlesPageSelector';
 
 interface Props {
- className?: string;
+    className?: string;
 }
 
 export function ArticleInfiniteList({ className }: Props) {
@@ -26,9 +30,7 @@ export function ArticleInfiniteList({ className }: Props) {
         dispatch(initArticlesPage(searchParams));
     });
     if (error) {
-        return (
-            <Text text={t('Произошла ошибка при загрузке статей')} />
-        );
+        return <Text text={t('Произошла ошибка при загрузке статей')} />;
     }
     return (
         <ArticleList

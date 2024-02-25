@@ -18,10 +18,16 @@ export const profileSlice = createSlice({
     name: 'profile',
     initialState,
     reducers: {
-        setReadonly: (state: ProfileSchema, { payload }: PayloadAction<boolean>) => {
+        setReadonly: (
+            state: ProfileSchema,
+            { payload }: PayloadAction<boolean>,
+        ) => {
             state.readonly = payload;
         },
-        updateProfile: (state: ProfileSchema, { payload }: PayloadAction<Profile>) => {
+        updateProfile: (
+            state: ProfileSchema,
+            { payload }: PayloadAction<Profile>,
+        ) => {
             state.form = {
                 ...state.form,
                 ...payload,
@@ -39,11 +45,14 @@ export const profileSlice = createSlice({
                 state.validateError = undefined;
                 state.isLoading = true;
             })
-            .addCase(fetchProfileData.fulfilled, (state, { payload }: PayloadAction<Profile>) => {
-                state.isLoading = false;
-                state.data = payload;
-                state.form = payload;
-            })
+            .addCase(
+                fetchProfileData.fulfilled,
+                (state, { payload }: PayloadAction<Profile>) => {
+                    state.isLoading = false;
+                    state.data = payload;
+                    state.form = payload;
+                },
+            )
             .addCase(fetchProfileData.rejected, (state, { payload }) => {
                 state.isLoading = false;
                 state.validateError = payload as ValidateProfileError[];
@@ -52,12 +61,15 @@ export const profileSlice = createSlice({
                 state.validateError = undefined;
                 state.isLoading = true;
             })
-            .addCase(updateProfileData.fulfilled, (state, { payload }: PayloadAction<Profile>) => {
-                state.isLoading = false;
-                state.data = payload;
-                state.form = payload;
-                state.readonly = true;
-            })
+            .addCase(
+                updateProfileData.fulfilled,
+                (state, { payload }: PayloadAction<Profile>) => {
+                    state.isLoading = false;
+                    state.data = payload;
+                    state.form = payload;
+                    state.readonly = true;
+                },
+            )
             .addCase(updateProfileData.rejected, (state, { payload }) => {
                 state.isLoading = false;
                 state.validateError = payload as ValidateProfileError[];

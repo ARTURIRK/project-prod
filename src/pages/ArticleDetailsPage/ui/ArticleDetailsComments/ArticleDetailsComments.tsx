@@ -14,8 +14,8 @@ import { getArticleRecommendationsIsLoading } from '../../model/selectors/recomm
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 
 interface Props {
- className?: string;
- id?: string;
+    className?: string;
+    id?: string;
 }
 
 export function ArticleDetailsComments({ className, id }: Props) {
@@ -23,14 +23,22 @@ export function ArticleDetailsComments({ className, id }: Props) {
     const { t } = useTranslation('article');
     const comments = useSelector(getArticleComments.selectAll);
     const commentsIsLoading = useSelector(getArticleRecommendationsIsLoading);
-    const onSendComment = useCallback((text: string) => {
-        dispatch(addCommentForArticle(text));
-    }, [dispatch]);
+    const onSendComment = useCallback(
+        (text: string) => {
+            dispatch(addCommentForArticle(text));
+        },
+        [dispatch],
+    );
     useInitialEffect(() => {
         dispatch(fetchCommentsByArticleId(id));
     });
     return (
-        <VStack className={classNames('', {}, [className])} gap="16" max align="stretch">
+        <VStack
+            className={classNames('', {}, [className])}
+            gap="16"
+            max
+            align="stretch"
+        >
             <Text
                 size={TextSize.L}
                 title={t('Комментарии')}

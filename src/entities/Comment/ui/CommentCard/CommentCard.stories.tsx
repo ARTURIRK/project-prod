@@ -12,14 +12,20 @@ export default {
     },
 } as ComponentMeta<typeof CommentCard>;
 
-const Template: ComponentStory<typeof CommentCard> = (args) => <CommentCard {...args} />;
+const Template: ComponentStory<typeof CommentCard> = (args) => (
+    <CommentCard {...args} />
+);
 
 export const Normal = Template.bind({});
 Normal.args = {
     comment: {
         id: '1',
         text: 'hello world',
-        user: { id: '1', username: 'Artur', avatar: 'https://w.forfun.com/fetch/b4/b48a66b3c4ea0107be482a87f1e50fb8.jpeg' },
+        user: {
+            id: '1',
+            username: 'Artur',
+            avatar: 'https://w.forfun.com/fetch/b4/b48a66b3c4ea0107be482a87f1e50fb8.jpeg',
+        },
     },
 };
 
@@ -28,7 +34,11 @@ Loading.args = {
     comment: {
         id: '1',
         text: 'hello world',
-        user: { id: '1', username: 'Artur', avatar: 'https://w.forfun.com/fetch/b4/b48a66b3c4ea0107be482a87f1e50fb8.jpeg' },
+        user: {
+            id: '1',
+            username: 'Artur',
+            avatar: 'https://w.forfun.com/fetch/b4/b48a66b3c4ea0107be482a87f1e50fb8.jpeg',
+        },
     },
     isLoading: true,
 };
@@ -38,7 +48,11 @@ Dark.args = {
     comment: {
         id: '1',
         text: 'hello world',
-        user: { id: '1', username: 'Artur', avatar: 'https://w.forfun.com/fetch/b4/b48a66b3c4ea0107be482a87f1e50fb8.jpeg' },
+        user: {
+            id: '1',
+            username: 'Artur',
+            avatar: 'https://w.forfun.com/fetch/b4/b48a66b3c4ea0107be482a87f1e50fb8.jpeg',
+        },
     },
 };
 Dark.decorators = [ThemeDecorator(Theme.DARK)];

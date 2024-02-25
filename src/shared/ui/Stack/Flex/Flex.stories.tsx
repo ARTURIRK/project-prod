@@ -18,7 +18,8 @@ Row.args = {
             <div>first</div>
             <div>second</div>
             <div>third</div>
-        </>),
+        </>
+    ),
 };
 export const Column = Template.bind({});
 Column.args = {
@@ -28,7 +29,8 @@ Column.args = {
             <div>first</div>
             <div>second</div>
             <div>third</div>
-        </>),
+        </>
+    ),
 };
 export const RowGap16 = Template.bind({});
 RowGap16.args = {
@@ -38,7 +40,8 @@ RowGap16.args = {
             <div>first</div>
             <div>second</div>
             <div>third</div>
-        </>),
+        </>
+    ),
 };
 export const ColumnGap16 = Template.bind({});
 ColumnGap16.args = {
@@ -49,5 +52,6 @@ ColumnGap16.args = {
             <div>first</div>
             <div>second</div>
             <div>third</div>
-        </>),
+        </>
+    ),
 };

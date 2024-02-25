@@ -14,25 +14,28 @@ export default {
     },
 } as ComponentMeta<typeof EditableProfileCard>;
 
-const Template: ComponentStory<typeof EditableProfileCard> = (args) => <EditableProfileCard {...args} />;
+const Template: ComponentStory<typeof EditableProfileCard> = (args) => (
+    <EditableProfileCard {...args} />
+);
 
 export const Normal = Template.bind({});
 Normal.args = {
     id: '1',
 };
-Normal.decorators = [StoreDecorator({
-    profile: {
-        form: {
-
-            id: '1',
-            firstName: 'Артаг',
-            lastName: 'Цветаев',
-            age: 25,
-            currency: Currency.RUB,
-            country: Country.BEL,
-            city: 'Moscow',
-            username: 'admin',
-            avatar: 'https://w.forfun.com/fetch/b4/b48a66b3c4ea0107be482a87f1e50fb8.jpeg',
+Normal.decorators = [
+    StoreDecorator({
+        profile: {
+            form: {
+                id: '1',
+                firstName: 'Артаг',
+                lastName: 'Цветаев',
+                age: 25,
+                currency: Currency.RUB,
+                country: Country.BEL,
+                city: 'Moscow',
+                username: 'admin',
+                avatar: 'https://w.forfun.com/fetch/b4/b48a66b3c4ea0107be482a87f1e50fb8.jpeg',
+            },
         },
-    },
-})];
+    }),
+];

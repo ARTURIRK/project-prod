@@ -5,14 +5,17 @@ import { getRouteAdmin, getRouteProfile } from '@/shared/const';
 import { Avatar } from '@/shared/ui/Avatar';
 import { Dropdown } from '@/shared/ui/Popups';
 import {
-    getUserAuthData, isUserAdmin, isUserModerator, userActions,
+    getUserAuthData,
+    isUserAdmin,
+    isUserModerator,
+    userActions,
 } from '@/entities/User';
 
 interface Props {
     className?: string;
 }
 
-export const AvatarDropdown = memo(({ className } :Props) => {
+export const AvatarDropdown = memo(({ className }: Props) => {
     const isAdmin = useSelector(isUserAdmin);
     const isModerator = useSelector(isUserModerator);
     const { t } = useTranslation();
@@ -31,18 +34,31 @@ export const AvatarDropdown = memo(({ className } :Props) => {
         <Dropdown
             className={className}
             direction="bottom left"
-            items={[...(isAdmin || isModerator ? [{
-                content: t('Админка'),
-                href: getRouteAdmin(),
-            }] : []), {
-                content: t('Выйти'),
-                onClick: onLogout,
-            },
-            {
-                content: t('Профиль'),
-                href: getRouteProfile(authData.id),
-            }]}
-            trigger={<Avatar fallbackInverted size={30} src={authData.avatar} />}
+            items={[
+                ...(isAdmin || isModerator
+                    ? [
+                          {
+                              content: t('Админка'),
+                              href: getRouteAdmin(),
+                          },
+                      ]
+                    : []),
+                {
+                    content: t('Выйти'),
+                    onClick: onLogout,
+                },
+                {
+                    content: t('Профиль'),
+                    href: getRouteProfile(authData.id),
+                },
+            ]}
+            trigger={
+                <Avatar
+                    fallbackInverted
+                    size={30}
+                    src={authData.avatar}
+                />
+            }
         />
     );
 });

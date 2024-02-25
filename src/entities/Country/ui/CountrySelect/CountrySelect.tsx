@@ -4,10 +4,10 @@ import { ListBox } from '@/shared/ui/Popups';
 import { Country } from '../../model/types/country';
 
 interface Props {
- className?: string;
- value?: Country;
- onChange?: (value: Country) => void;
- readonly?: boolean;
+    className?: string;
+    value?: Country;
+    onChange?: (value: Country) => void;
+    readonly?: boolean;
 }
 const options = [
     { value: Country.RUS, content: Country.RUS },
@@ -15,9 +15,7 @@ const options = [
     { value: Country.BEL, content: Country.BEL },
 ];
 export const CountrySelect = memo(
-    ({
-        className, value, onChange, readonly,
-    }: Props) => {
+    ({ className, value, onChange, readonly }: Props) => {
         const { t } = useTranslation();
         const onChangeHandler = (value: string) => {
             if (onChange) {
@@ -25,7 +23,6 @@ export const CountrySelect = memo(
             }
         };
         return (
-
             <ListBox
                 className={className}
                 label={t('Укажите страну')}

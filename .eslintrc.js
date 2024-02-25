@@ -8,6 +8,7 @@ module.exports = {
         'plugin:react/recommended',
         'airbnb',
         'plugin:i18next/recommended',
+        'prettier',
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
@@ -26,9 +27,6 @@ module.exports = {
         'unused-imports',
     ],
     rules: {
-        'react/jsx-indent': [2, 4],
-        'react/jsx-indent-props': [2, 4],
-        indent: [2, 4],
         'react/jsx-filename-extension': [
             2,
             { extensions: ['.js', '.jsx', '.tsx'] },
@@ -47,6 +45,7 @@ module.exports = {
         'react/function-component-definition': 'off',
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'error',
+        'react/jsx-max-props-per-line': ['error', { maximum: 3 }],
         'no-shadow': 'off',
         'jsx-a11y/no-static-element-interactions': 'off',
         'jsx-a11y/click-events-have-key-events': 'off',
@@ -56,11 +55,19 @@ module.exports = {
         'no-underscore-dangle': 'off',
         'react/no-array-index-key': 'off',
         'relative-path-arturts/path-checker': ['error', { alias: '@' }],
-        'relative-path-arturts/public-api-imports': ['error', {
-            alias: '@',
-            testFilesPatterns: ['**/*.test.*', '**/*.stories.*', '**/StoreDecorator.tsx'],
-        }],
-        'relative-path-arturts/layer-imports': ['error',
+        'relative-path-arturts/public-api-imports': [
+            'error',
+            {
+                alias: '@',
+                testFilesPatterns: [
+                    '**/*.test.*',
+                    '**/*.stories.*',
+                    '**/StoreDecorator.tsx',
+                ],
+            },
+        ],
+        'relative-path-arturts/layer-imports': [
+            'error',
             {
                 alias: '@',
                 ignoreImportPatterns: ['**/StoreProvider', '**/testing'],
@@ -70,8 +77,7 @@ module.exports = {
             'error',
             {
                 markupOnly: true,
-                ignoreAttribute:
-                [
+                ignoreAttribute: [
                     'data-testid',
                     'to',
                     'target',

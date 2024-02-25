@@ -13,17 +13,22 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
     fullWidth?: boolean;
 }
 
-export const Card = memo(({
-    className,
-    children,
-    theme = CardTheme.NORMAL,
-    fullWidth,
-    ...otherProps
-}: Props) => (
-    <div
-        className={classNames(cls.Card, { [cls.fullWidth]: fullWidth }, [className, cls[theme]])}
-        {...otherProps}
-    >
-        {children}
-    </div>
-));
+export const Card = memo(
+    ({
+        className,
+        children,
+        theme = CardTheme.NORMAL,
+        fullWidth,
+        ...otherProps
+    }: Props) => (
+        <div
+            className={classNames(cls.Card, { [cls.fullWidth]: fullWidth }, [
+                className,
+                cls[theme],
+            ])}
+            {...otherProps}
+        >
+            {children}
+        </div>
+    ),
+);

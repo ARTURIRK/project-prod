@@ -24,7 +24,7 @@ import {
 import cls from './ArticlesPageFilters.module.scss';
 
 interface Props {
- className?: string;
+    className?: string;
 }
 
 export const ArticlesPageFilters = memo(({ className }: Props) => {
@@ -40,29 +40,44 @@ export const ArticlesPageFilters = memo(({ className }: Props) => {
         dispatch(fetchArticlesList({ replace: true }));
     }, [dispatch]);
     const debouncedFetchData = useDebounce(fetchData, 500);
-    const onChaneView = useCallback((view: ArticleView) => {
-        dispatch(articlesPageActions.setView(view));
-    }, [dispatch]);
-    const onChangeOrder = useCallback((newOrder: SortOrder) => {
-        dispatch(articlesPageActions.setOrder(newOrder));
-        dispatch(articlesPageActions.setPage(1));
-        debouncedFetchData();
-    }, [dispatch, debouncedFetchData]);
-    const onChangeSort = useCallback((newSort: ArticleSortField) => {
-        dispatch(articlesPageActions.setSort(newSort));
-        dispatch(articlesPageActions.setPage(1));
-        debouncedFetchData();
-    }, [dispatch, debouncedFetchData]);
-    const onChangeSearch = useCallback((newSearch: string) => {
-        dispatch(articlesPageActions.setSearch(newSearch));
-        dispatch(articlesPageActions.setPage(1));
-        debouncedFetchData();
-    }, [dispatch, debouncedFetchData]);
-    const onChangeType = useCallback((tab: TabItem) => {
-        dispatch(articlesPageActions.setType(tab.value as ArticleType));
-        dispatch(articlesPageActions.setPage(1));
-        fetchData();
-    }, [dispatch, fetchData]);
+    const onChaneView = useCallback(
+        (view: ArticleView) => {
+            dispatch(articlesPageActions.setView(view));
+        },
+        [dispatch],
+    );
+    const onChangeOrder = useCallback(
+        (newOrder: SortOrder) => {
+            dispatch(articlesPageActions.setOrder(newOrder));
+            dispatch(articlesPageActions.setPage(1));
+            debouncedFetchData();
+        },
+        [dispatch, debouncedFetchData],
+    );
+    const onChangeSort = useCallback(
+        (newSort: ArticleSortField) => {
+            dispatch(articlesPageActions.setSort(newSort));
+            dispatch(articlesPageActions.setPage(1));
+            debouncedFetchData();
+        },
+        [dispatch, debouncedFetchData],
+    );
+    const onChangeSearch = useCallback(
+        (newSearch: string) => {
+            dispatch(articlesPageActions.setSearch(newSearch));
+            dispatch(articlesPageActions.setPage(1));
+            debouncedFetchData();
+        },
+        [dispatch, debouncedFetchData],
+    );
+    const onChangeType = useCallback(
+        (tab: TabItem) => {
+            dispatch(articlesPageActions.setType(tab.value as ArticleType));
+            dispatch(articlesPageActions.setPage(1));
+            fetchData();
+        },
+        [dispatch, fetchData],
+    );
     return (
         <div className={classNames(cls.ArticlePageFilter, {}, [className])}>
             <div className={cls.sortWrapper}>
@@ -72,7 +87,10 @@ export const ArticlesPageFilters = memo(({ className }: Props) => {
                     onChangeOrder={onChangeOrder}
                     onChangeSort={onChangeSort}
                 />
-                <ViewSelector view={view || ArticleView.SMALL} onViewClick={onChaneView} />
+                <ViewSelector
+                    view={view || ArticleView.SMALL}
+                    onViewClick={onChaneView}
+                />
             </div>
             <Card className={cls.search}>
                 <Input
@@ -81,8 +99,11 @@ export const ArticlesPageFilters = memo(({ className }: Props) => {
                     onChange={onChangeSearch}
                 />
             </Card>
-            <ArticleTypeTabs value={type} onChangeType={onChangeType} className={cls.tabs} />
-
+            <ArticleTypeTabs
+                value={type}
+                onChangeType={onChangeType}
+                className={cls.tabs}
+            />
         </div>
     );
 });

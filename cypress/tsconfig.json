@@ -12,8 +12,14 @@
     "allowJs": true,
     "isolatedModules": false
   },
+  "exclude": [
+    "node_modules",
+    "cypress",
+    "./cypress.config.ts"
+  ],
   "extends": "../tsconfig.json",
   "include": [
-    "**/*.ts"
+    "**/*.ts",
+    "**/*.tsx"
   ]
 }

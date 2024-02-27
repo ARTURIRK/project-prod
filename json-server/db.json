@@ -916,6 +916,10 @@
             "country": "Russia",
             "city": "Moscow",
             "username": "КРУТОЙ",
+            "features": {
+                "isArticleRatingEnabled": false,
+                "isArticleRecommendationsEnabled": true
+            },
             "avatar": "https://w.forfun.com/fetch/b4/b48a66b3c4ea0107be482a87f1e50fb8.jpeg"
         },
         {
@@ -927,6 +931,10 @@
             "country": "Belorussia",
             "city": "Moscow",
             "username": "ЮЗЕР",
+            "features": {
+                "isArticleRatingEnabled": false,
+                "isArticleRecommendationsEnabled": true
+            },
             "avatar": "https://s0.rbk.ru/v6_top_pics/media/img/7/19/756752350085197.webp"
         },
         {
@@ -938,6 +946,10 @@
             "country": "Russia",
             "city": "Irkutsk",
             "username": "testuser",
+            "features": {
+                "isArticleRatingEnabled": false,
+                "isArticleRecommendationsEnabled": true
+            },
             "avatar": "https://w.forfun.com/fetch/b4/b48a66b3c4ea0107be482a87f1e50fb8.jpeg"
         }
     ],

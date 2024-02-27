@@ -14,6 +14,7 @@ import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDet
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
 import { articleDetailsPageReducer } from '../../model/slices';
 import cls from './ArticleDetailsPage.module.scss';
+import { getFeatureFlag } from '@/shared/lib/features';
 
 interface Props {
     className?: string;
@@ -26,6 +27,10 @@ const ArticleDetailsPage = ({ className }: Props) => {
     if (!id) {
         return null;
     }
+    const isArticleRatingEnabled = getFeatureFlag('isArticleRatingEnabled');
+    const isArticleRecommendationsEnabled = getFeatureFlag(
+        'isArticleRecommendationsEnabled',
+    );
     return (
         <DynamicModuleLoader reducers={reducers}>
             <Page
@@ -37,10 +42,12 @@ const ArticleDetailsPage = ({ className }: Props) => {
                 >
                     <ArticleDetailsPageHeader />
                     <ArticleDetails id={id} />
-                    <ArticleRating articleId={id} />
-                    <ArticleRecommendationsList
-                        className={cls.recommendations}
-                    />
+                    {isArticleRatingEnabled && <ArticleRating articleId={id} />}
+                    {isArticleRecommendationsEnabled && (
+                        <ArticleRecommendationsList
+                            className={cls.recommendations}
+                        />
+                    )}
                     <ArticleDetailsComments id={id} />
                 </VStack>
             </Page>

@@ -41,6 +41,7 @@ module.exports = {
         'react/jsx-props-no-spreading': 'off',
         'no-param-reassign': 'off',
         'react/destructuring-assignment': 'off',
+        'react/no-unstable-nested-components': 'warn',
         'linebreak-style': 'off',
         'no-undef': 'off',
         'react/function-component-definition': 'off',

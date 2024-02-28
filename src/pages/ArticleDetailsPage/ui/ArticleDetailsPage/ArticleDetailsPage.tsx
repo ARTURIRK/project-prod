@@ -14,7 +14,7 @@ import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDet
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
 import { articleDetailsPageReducer } from '../../model/slices';
 import cls from './ArticleDetailsPage.module.scss';
-import { getFeatureFlag } from '@/shared/lib/features';
+import { getFeatureFlag, toggleFeatures } from '@/shared/lib/features';
 
 interface Props {
     className?: string;
@@ -27,10 +27,15 @@ const ArticleDetailsPage = ({ className }: Props) => {
     if (!id) {
         return null;
     }
-    const isArticleRatingEnabled = getFeatureFlag('isArticleRatingEnabled');
+    const ArticleRatingCard = toggleFeatures({
+        name: 'isArticleRatingEnabled',
+        on: () => <ArticleRating articleId={id} />,
+        off: () => null,
+    });
     const isArticleRecommendationsEnabled = getFeatureFlag(
         'isArticleRecommendationsEnabled',
     );
+
     return (
         <DynamicModuleLoader reducers={reducers}>
             <Page
@@ -42,7 +47,7 @@ const ArticleDetailsPage = ({ className }: Props) => {
                 >
                     <ArticleDetailsPageHeader />
                     <ArticleDetails id={id} />
-                    {isArticleRatingEnabled && <ArticleRating articleId={id} />}
+                    {ArticleRatingCard}
                     {isArticleRecommendationsEnabled && (
                         <ArticleRecommendationsList
                             className={cls.recommendations}

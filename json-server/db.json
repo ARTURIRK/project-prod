@@ -975,7 +975,8 @@
       ],
       "avatar": "https://s0.rbk.ru/v6_top_pics/media/img/7/19/756752350085197.webp",
       "jsonSettings": {
-        "theme": "app_dark_theme"
+        "theme": "app_dark_theme",
+        "isArticlesPageWasOpened": true
       }
     },
     {

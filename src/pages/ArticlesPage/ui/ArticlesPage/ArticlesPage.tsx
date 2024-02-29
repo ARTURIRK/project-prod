@@ -1,4 +1,5 @@
 import { memo, useCallback } from 'react';
+import { ArticlePageGreeting } from '@/features/articlePageGreeting';
 import {
     DynamicModuleLoader,
     type ReducersList,
@@ -36,6 +37,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
             >
                 <ArticlesPageFilters />
                 <ArticleInfiniteList className={cls.articleList} />
+                <ArticlePageGreeting />
             </Page>
         </DynamicModuleLoader>
     );

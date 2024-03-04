@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ArticleRecommendationsList } from '@/features/articleRecommendationsList';
 import { ArticleRating } from '@/features/articleRating';
 import { ArticleDetails } from '@/entities/Article';
@@ -14,7 +15,8 @@ import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDet
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
 import { articleDetailsPageReducer } from '../../model/slices';
 import cls from './ArticleDetailsPage.module.scss';
-import { getFeatureFlag, toggleFeatures } from '@/shared/lib/features';
+import { ToggleFeatures, getFeatureFlag } from '@/shared/lib/features';
+import { Card } from '@/shared/ui/Card';
 
 interface Props {
     className?: string;
@@ -24,14 +26,10 @@ const reducers: ReducersList = {
 };
 const ArticleDetailsPage = ({ className }: Props) => {
     const { id } = useParams<{ id: string }>();
+    const { t } = useTranslation();
     if (!id) {
         return null;
     }
-    const ArticleRatingCard = toggleFeatures({
-        name: 'isArticleRatingEnabled',
-        on: () => <ArticleRating articleId={id} />,
-        off: () => null,
-    });
     const isArticleRecommendationsEnabled = getFeatureFlag(
         'isArticleRecommendationsEnabled',
     );
@@ -47,7 +45,11 @@ const ArticleDetailsPage = ({ className }: Props) => {
                 >
                     <ArticleDetailsPageHeader />
                     <ArticleDetails id={id} />
-                    {ArticleRatingCard}
+                    <ToggleFeatures
+                        feature="isArticleRatingEnabled"
+                        on={<ArticleRating articleId={id} />}
+                        off={<Card>{t('Оценка статей скоро появится!')}</Card>}
+                    />
                     {isArticleRecommendationsEnabled && (
                         <ArticleRecommendationsList
                             className={cls.recommendations}

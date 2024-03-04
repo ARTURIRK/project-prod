@@ -81,6 +81,7 @@ module.exports = {
                 markupOnly: true,
                 ignoreAttribute: [
                     'data-testid',
+                    'feature',
                     'to',
                     'target',
                     'justify',

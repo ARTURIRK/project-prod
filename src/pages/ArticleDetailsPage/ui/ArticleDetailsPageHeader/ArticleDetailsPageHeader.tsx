@@ -3,9 +3,9 @@ import { memo, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getRouteArticleEdit, getRouteArticles } from '@/shared/const';
-import { Button, ButtonTheme } from '@/shared/ui/Button';
+import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { HStack } from '@/shared/ui/Stack';
+import { HStack } from '@/shared/ui/deprecated/Stack';
 import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
 import { getCanEditArticle } from '../../model/selectors/article';
 

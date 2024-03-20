@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { getRouteArticleEdit, getRouteArticles } from '@/shared/const';
 import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { HStack } from '@/shared/ui/deprecated/Stack';
+import { HStack } from '@/shared/ui/redesigned/Stack';
 import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
 import { getCanEditArticle } from '../../model/selectors/article';
 

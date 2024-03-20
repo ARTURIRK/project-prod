@@ -8,8 +8,8 @@ import {
     getArticlesPageOrder,
     getArticlesPageSearch,
     getArticlesPageSort,
-    getArticlesPAgeType,
-} from '../../selectors/articlesPageSelector';
+    getArticlesPageType,
+} from '../../selectors/articlesPageSelectors';
 
 interface FetchArticleProps {
     replace?: boolean;
@@ -25,7 +25,7 @@ export const fetchArticlesList = createAsyncThunk<
     const order = getArticlesPageOrder(getState());
     const search = getArticlesPageSearch(getState());
     const page = getArticlesPageNum(getState());
-    const type = getArticlesPAgeType(getState());
+    const type = getArticlesPageType(getState());
     try {
         addQueryParams({
             sort,

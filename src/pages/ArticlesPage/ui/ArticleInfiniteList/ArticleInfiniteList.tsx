@@ -12,7 +12,7 @@ import {
     getArticlesPageError,
     getArticlesPageLoading,
     getArticlesPageView,
-} from '../../model/selectors/articlesPageSelector';
+} from '../../model/selectors/articlesPageSelectors';
 
 interface Props {
     className?: string;

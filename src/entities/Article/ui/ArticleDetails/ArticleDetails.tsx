@@ -12,7 +12,7 @@ import EyeIcon from '@/shared/assets/icons/eye.svg';
 import DateIcon from '@/shared/assets/icons/date.svg';
 import { Icon } from '@/shared/ui/redesigned/Icon';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect';
-import { HStack, VStack } from '@/shared/ui/deprecated/Stack';
+import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
 import { fetchArticleById } from '../../../Article/model/services/fetchArticleById/fetchArticleById';
 import { ArticleBlock } from '../../model/types/article';

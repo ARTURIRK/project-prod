@@ -4,7 +4,7 @@ import {
     getArticlesPageHasMore,
     getArticlesPageLoading,
     getArticlesPageNum,
-} from '../../selectors/articlesPageSelector';
+} from '../../selectors/articlesPageSelectors';
 import { articlesPageActions } from '../../slices/articlesPageSlice';
 import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList';
 

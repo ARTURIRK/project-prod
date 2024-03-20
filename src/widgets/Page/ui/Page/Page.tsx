@@ -39,9 +39,13 @@ export const Page = (props: Props) => {
         );
     }, 500);
     useInfiniteScroll({
-        callback: onScrollEnd,
         triggerRef,
-        wrapperRef,
+        wrapperRef: toggleFeatures({
+            name: 'isAppRedesigned',
+            on: () => undefined,
+            off: () => wrapperRef,
+        }),
+        callback: onScrollEnd,
     });
     useInitialEffect(() => {
         wrapperRef.current.scrollTop = scrollPosition;

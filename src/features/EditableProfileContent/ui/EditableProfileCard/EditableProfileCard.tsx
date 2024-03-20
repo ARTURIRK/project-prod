@@ -10,7 +10,7 @@ import {
     DynamicModuleLoader,
     type ReducersList,
 } from '@/shared/lib/components';
-import { VStack } from '@/shared/ui/deprecated/Stack';
+import { VStack } from '@/shared/ui/redesigned/Stack';
 import { ValidateProfileError } from '../../model/consts/consts';
 import { getProfileInfo } from '../../model/selectors/getProfileInfo';
 import { profileActions, profileReducer } from '../../model/slice/profileSlice';

@@ -2,8 +2,8 @@ import { useMemo, CSSProperties } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Avatar.module.scss';
 import { AppImage } from '../AppImage';
-import AvatarIcon from '@/shared/assets/icons/avatar.svg';
-import { Icon } from '../Icon';
+import AvatarIcon from '@/shared/assets/icons/new-avatar.svg';
+import { Icon } from '../../redesigned/Icon';
 import { Skeleton } from '../Skeleton';
 
 interface Props {
@@ -33,7 +33,6 @@ export function Avatar({
     );
     const errorFallback = (
         <Icon
-            inverted={fallbackInverted}
             width={size}
             height={size}
             Svg={AvatarIcon}

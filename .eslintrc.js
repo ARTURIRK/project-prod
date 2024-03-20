@@ -82,6 +82,8 @@ module.exports = {
                 ignoreAttribute: [
                     'data-testid',
                     'feature',
+                    'color',
+                    'variant',
                     'to',
                     'target',
                     'justify',

@@ -5,7 +5,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
 import { Drawer } from '@/shared/ui/deprecated/Drawer';
 import { Popover } from '@/shared/ui/deprecated/Popups';
-import { Icon } from '@/shared/ui/deprecated/Icon';
+import { Icon } from '@/shared/ui/redesigned/Icon';
 import BellIcon from '@/shared/assets/icons/bell.svg';
 import cls from './NotificationButton.module.scss';
 
@@ -28,7 +28,7 @@ export const NotificationButton = memo(({ className }: Props) => {
         >
             <Icon
                 Svg={BellIcon}
-                inverted
+      
             />
         </Button>
     );

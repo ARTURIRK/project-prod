@@ -8,7 +8,7 @@ import { AppImage } from '@/shared/ui/deprecated/AppImage';
 import { AppLink } from '@/shared/ui/deprecated/AppLink';
 import { Avatar } from '@/shared/ui/deprecated/Avatar';
 import { Text } from '@/shared/ui/deprecated/Text';
-import { Icon } from '@/shared/ui/deprecated/Icon';
+import { Icon } from '@/shared/ui/redesigned/Icon';
 import { Card } from '@/shared/ui/deprecated/Card';
 import { ArticleBlockType, ArticleView } from '../../model/consts/consts';
 import { Article, ArticleTextBlock } from '../../model/types/article';

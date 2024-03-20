@@ -10,7 +10,7 @@ import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
 import { Avatar } from '@/shared/ui/deprecated/Avatar';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
 import DateIcon from '@/shared/assets/icons/date.svg';
-import { Icon } from '@/shared/ui/deprecated/Icon';
+import { Icon } from '@/shared/ui/redesigned/Icon';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect';
 import { HStack, VStack } from '@/shared/ui/deprecated/Stack';
 import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';

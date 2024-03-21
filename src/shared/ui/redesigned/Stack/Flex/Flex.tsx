@@ -11,7 +11,7 @@ export type FlexAlign =
     | 'between'
     | 'stretch';
 export type FlexDirection = 'row' | 'column' | 'row-reverse' | 'column-reverse';
-export type FlexGap = '4' | '8' | '16' | '32' | '64';
+export type FlexGap = '4' | '8' | '16' | '24' | '32' | '64';
 
 type DivProps = DetailedHTMLProps<
     HTMLAttributes<HTMLDivElement>,
@@ -51,6 +51,7 @@ const gapClasses: Record<FlexGap, string> = {
     4: cls.gap4,
     8: cls.gap8,
     16: cls.gap16,
+    24: cls.gap24,
     32: cls.gap32,
     64: cls.gap64,
 };

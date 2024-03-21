@@ -980,7 +980,7 @@
         "isAppRedesigned": true
       },
       "jsonSettings": {
-        "theme": "app_dark_theme",
+        "theme": "app_purple_theme",
         "isFirstVisit": true,
         "settingsPageHasBeenOpen": false,
         "isArticlesPageWasOpened": true
@@ -1030,10 +1030,10 @@
     {
       "id": "1",
       "firstName": "Артаг",
-      "lastName": "Цветаевич",
+      "lastName": "Цветаев",
       "age": 12,
-      "currency": "EUR",
-      "country": "Russia",
+      "currency": "RUB",
+      "country": "Belorussia",
       "city": "Moscow",
       "username": "КРУТОЙ",
       "features": {

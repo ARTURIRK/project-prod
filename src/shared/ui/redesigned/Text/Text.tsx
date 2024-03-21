@@ -15,6 +15,7 @@ interface TextProps extends HTMLAttributes<HTMLParagraphElement> {
     variant?: TextVariant;
     align?: TextAlign;
     size?: TextSize;
+    bold?: boolean;
     'data-testid'?: string;
 }
 
@@ -32,49 +33,49 @@ const mapSizeToHeaderTag: Record<TextSize, HeaderTagType> = {
     l: 'h1',
 };
 
-export const Text = memo(
-    ({
+export const Text = memo((props: TextProps) => {
+    const {
         className,
         text,
         title,
         variant = 'primary',
         align = 'left',
         size = 'm',
+        bold,
         'data-testid': dataTestId = 'Text',
         ...otherProps
-    }: TextProps) => {
-        const HeaderTag = mapSizeToHeaderTag[size];
-        const sizeClass = mapSizeToClass[size];
+    } = props;
 
-        const additionalClasses = [
-            className,
-            cls[variant],
-            cls[align],
-            sizeClass,
-        ];
+    const HeaderTag = mapSizeToHeaderTag[size];
+    const sizeClass = mapSizeToClass[size];
 
-        return (
-            <div
-                className={classNames(cls.Text, {}, additionalClasses)}
-                {...otherProps}
-            >
-                {title && (
-                    <HeaderTag
-                        className={cls.title}
-                        data-testid={`${dataTestId}.Header`}
-                    >
-                        {title}
-                    </HeaderTag>
-                )}
-                {text && (
-                    <p
-                        className={cls.text}
-                        data-testid={`${dataTestId}.Paragraph`}
-                    >
-                        {text}
-                    </p>
-                )}
-            </div>
-        );
-    },
-);
+    const additionalClasses = [className, cls[variant], cls[align], sizeClass];
+
+    return (
+        <div
+            className={classNames(
+                cls.Text,
+                { [cls.bold]: bold },
+                additionalClasses,
+            )}
+            {...otherProps}
+        >
+            {title && (
+                <HeaderTag
+                    className={cls.title}
+                    data-testid={`${dataTestId}.Header`}
+                >
+                    {title}
+                </HeaderTag>
+            )}
+            {text && (
+                <p
+                    className={cls.text}
+                    data-testid={`${dataTestId}.Paragraph`}
+                >
+                    {text}
+                </p>
+            )}
+        </div>
+    );
+});

@@ -1,53 +1,55 @@
 import {
     ImgHTMLAttributes,
-    ReactElement,
     memo,
+    ReactElement,
     useLayoutEffect,
     useState,
 } from 'react';
 
-interface Props extends ImgHTMLAttributes<HTMLImageElement> {
+interface AppImageProps extends ImgHTMLAttributes<HTMLImageElement> {
     className?: string;
     fallback?: ReactElement;
     errorFallback?: ReactElement;
 }
 
-export const AppImage = memo(
-    ({
+export const AppImage = memo((props: AppImageProps) => {
+    const {
         className,
         src,
         alt = 'image',
-        fallback,
         errorFallback,
-        ...props
-    }: Props) => {
-        const [isLoading, setIsLoading] = useState(true);
-        const [isError, setIsError] = useState(false);
-        useLayoutEffect(() => {
-            const img = new Image();
-            img.src = src ?? '';
-            img.onload = () => {
-                setIsLoading(false);
-            };
-            img.onerror = () => {
-                setIsLoading(false);
-                setIsError(true);
-            };
-        }, [src]);
-        if (isLoading && fallback) {
-            return fallback;
-        }
+        fallback,
+        ...otherProps
+    } = props;
+    const [isLoading, setIsLoading] = useState(true);
+    const [hasError, setHasError] = useState(false);
 
-        if (isError && errorFallback) {
-            return errorFallback;
-        }
-        return (
-            <img
-                className={className}
-                src={src}
-                alt={alt}
-                {...props}
-            />
-        );
-    },
-);
+    useLayoutEffect(() => {
+        const img = new Image();
+        img.src = src ?? '';
+        img.onload = () => {
+            setIsLoading(false);
+        };
+        img.onerror = () => {
+            setIsLoading(false);
+            setHasError(true);
+        };
+    }, [src]);
+
+    if (isLoading && fallback) {
+        return fallback;
+    }
+
+    if (hasError && errorFallback) {
+        return errorFallback;
+    }
+
+    return (
+        <img
+            className={className}
+            src={src}
+            alt={alt}
+            {...otherProps}
+        />
+    );
+});

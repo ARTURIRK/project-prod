@@ -83,6 +83,7 @@ module.exports = {
                     'data-testid',
                     'feature',
                     'color',
+                    'size',
                     'variant',
                     'to',
                     'target',

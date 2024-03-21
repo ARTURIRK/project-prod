@@ -7,8 +7,10 @@ import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkele
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import cls from './ArticleList.module.scss';
 import { Article } from '../../model/types/article';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { HStack } from '@/shared/ui/redesigned/Stack';
 
-interface Props {
+interface ArticleListProps {
     className?: string;
     articles: Article[];
     isLoading?: boolean;
@@ -25,51 +27,74 @@ const getSkeletons = (view: ArticleView) =>
         />
     ));
 
-export const ArticleList = memo(
-    ({
+export const ArticleList = memo((props: ArticleListProps) => {
+    const {
         className,
         articles,
         view = ArticleView.SMALL,
         isLoading,
         target,
-    }: Props) => {
-        const { t } = useTranslation();
+    } = props;
+    const { t } = useTranslation();
 
-        if (!isLoading && !articles.length) {
-            return (
-                <div
-                    className={classNames(cls.ArticleList, {}, [
-                        className,
-                        cls[view],
-                    ])}
-                >
-                    <Text
-                        size={TextSize.L}
-                        title={t('Статьи не найдены')}
-                    />
-                </div>
-            );
-        }
-
+    if (!isLoading && !articles.length) {
         return (
             <div
                 className={classNames(cls.ArticleList, {}, [
                     className,
                     cls[view],
                 ])}
-                data-testid="ArticleList"
             >
-                {articles.map((item) => (
-                    <ArticleListItem
-                        article={item}
-                        view={view}
-                        target={target}
-                        key={item.id}
-                        className={cls.card}
-                    />
-                ))}
-                {isLoading && getSkeletons(view)}
+                <Text
+                    size={TextSize.L}
+                    title={t('Статьи не найдены')}
+                />
             </div>
         );
-    },
-);
+    }
+
+    return (
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            on={
+                <HStack
+                    wrap="wrap"
+                    gap="16"
+                    className={classNames(cls.ArticleListRedesigned, {}, [])}
+                    data-testid="ArticleList"
+                >
+                    {articles.map((item) => (
+                        <ArticleListItem
+                            article={item}
+                            view={view}
+                            target={target}
+                            key={item.id}
+                            className={cls.card}
+                        />
+                    ))}
+                    {isLoading && getSkeletons(view)}
+                </HStack>
+            }
+            off={
+                <div
+                    className={classNames(cls.ArticleList, {}, [
+                        className,
+                        cls[view],
+                    ])}
+                    data-testid="ArticleList"
+                >
+                    {articles.map((item) => (
+                        <ArticleListItem
+                            article={item}
+                            view={view}
+                            target={target}
+                            key={item.id}
+                            className={cls.card}
+                        />
+                    ))}
+                    {isLoading && getSkeletons(view)}
+                </div>
+            }
+        />
+    );
+});

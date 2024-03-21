@@ -85,6 +85,7 @@ module.exports = {
                     'color',
                     'size',
                     'variant',
+                    'wrap',
                     'to',
                     'target',
                     'justify',

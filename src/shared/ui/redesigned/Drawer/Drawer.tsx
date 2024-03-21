@@ -2,9 +2,10 @@ import { memo, ReactNode, useCallback, useEffect } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useTheme } from '@/shared/lib/hooks/useTheme';
 import { AnimationProvider, useAnimationLibs } from '@/shared/lib/components';
-import { Overlay } from '../../redesigned/Overlay';
+import { Overlay } from '../Overlay';
 import cls from './Drawer.module.scss';
-import { Portal } from '../../redesigned/Portal';
+import { Portal } from '../Portal';
+import { toggleFeatures } from '@/shared/lib/features';
 
 interface Props {
     className?: string;
@@ -15,10 +16,7 @@ interface Props {
 }
 
 const height = window.innerHeight - 100;
-/**
- * Устарел, используем новые компоненты из папки redesigned
- * @deprecated
- */
+
 export const DrawerContent = memo(
     ({ className, children, onClose, isOpen, lazy }: Props) => {
         const { Spring, Gesture } = useAnimationLibs();
@@ -78,12 +76,17 @@ export const DrawerContent = memo(
         const display = y.to((py) => (py < height ? 'block' : 'none'));
 
         return (
-            <Portal>
+            <Portal element={document.getElementById('app') ?? document.body}>
                 <div
                     className={classNames(cls.Drawer, {}, [
                         className,
                         theme,
                         'app_drawer',
+                        toggleFeatures({
+                            name: 'isAppRedesigned',
+                            on: () => cls.drawerNew,
+                            off: () => cls.drawerOld,
+                        }),
                     ])}
                 >
                     <Overlay onClick={close} />

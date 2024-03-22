@@ -18,7 +18,7 @@
     border: 1px solid var(--accent-redesigned);
 }
 
-.default {
+.normal {
     border-radius: 12px;
 }
 
@@ -34,6 +34,7 @@
     padding: 0;
 }
 
+
 .gap_8 {
     padding: 8px;
 }
@@ -43,5 +44,9 @@
 }
 
 .gap_24 {
-    padding: 24px;
+    padding: 24px
+}
+
+.fullHeight {
+    height: 100%;
 }

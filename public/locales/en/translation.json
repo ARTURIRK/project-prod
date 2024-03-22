@@ -25,5 +25,8 @@
     "Профиль": "Profile",
     "Введите текст комментария": "Input comment text",
     "Произошла ошибка при загрузке": "Error happens while loading",
-    "Попробуйте обновить страницу": "Try to reload page"
+    "Попробуйте обновить страницу": "Try to reload page",
+    "{{count}} просмотров_zero": "{{count}} views",
+    "{{count}} просмотров_one": "{{count}} view",
+    "{{count}} просмотров_other": "{{count}} views"
 }

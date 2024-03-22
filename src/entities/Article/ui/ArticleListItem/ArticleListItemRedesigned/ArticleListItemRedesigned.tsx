@@ -15,10 +15,7 @@ import { AppLink } from '@/shared/ui/redesigned/AppLink';
 import { getRouteArticleDetails } from '@/shared/const/router';
 import { Button } from '@/shared/ui/redesigned/Button';
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
-import {
-    ArticleBlockType,
-    ArticleView,
-} from '../../../model/consts/consts';
+import { ArticleBlockType, ArticleView } from '../../../model/consts/consts';
 
 export const ArticleListItemRedesigned = memo((props: ArticleListItemProps) => {
     const { className, article, view, target } = props;
@@ -29,6 +26,7 @@ export const ArticleListItemRedesigned = memo((props: ArticleListItemProps) => {
             <Avatar
                 size={32}
                 src={article.user.avatar}
+                className={cls.avatar}
             />
             <Text
                 bold
@@ -128,6 +126,7 @@ export const ArticleListItemRedesigned = memo((props: ArticleListItemProps) => {
         >
             <Card
                 className={cls.card}
+                padding="0"
                 border="round"
             >
                 <AppImage

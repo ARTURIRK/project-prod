@@ -1,5 +1,5 @@
-import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
+import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { RatingCard } from '@/entities/Rating';
 import {
@@ -16,17 +16,19 @@ export interface ArticleRatingProps {
 
 const ArticleRating = memo(({ className, articleId }: ArticleRatingProps) => {
     const { t } = useTranslation();
-    const user = useSelector(getUserAuthData);
-    const { isLoading, data } = useGetArticleRating({
-        userId: user?.id ?? '',
+    const userData = useSelector(getUserAuthData);
+
+    const { data, isLoading } = useGetArticleRating({
         articleId,
+        userId: userData?.id ?? '',
     });
     const [rateArticleMutation] = useRateArticle();
+
     const handleRateArticle = useCallback(
         (starsCount: number, feedback?: string) => {
             try {
                 rateArticleMutation({
-                    userId: user?.id ?? '',
+                    userId: userData?.id ?? '',
                     articleId,
                     rate: starsCount,
                     feedback,
@@ -35,8 +37,9 @@ const ArticleRating = memo(({ className, articleId }: ArticleRatingProps) => {
                 console.log(e);
             }
         },
-        [user, articleId, rateArticleMutation],
+        [articleId, rateArticleMutation, userData?.id],
     );
+
     const onAccept = useCallback(
         (starsCount: number, feedback?: string) => {
             handleRateArticle(starsCount, feedback);
@@ -45,7 +48,7 @@ const ArticleRating = memo(({ className, articleId }: ArticleRatingProps) => {
     );
 
     const onCancel = useCallback(
-        (starsCount: number, feedback?: string) => {
+        (starsCount: number) => {
             handleRateArticle(starsCount);
         },
         [handleRateArticle],
@@ -59,11 +62,13 @@ const ArticleRating = memo(({ className, articleId }: ArticleRatingProps) => {
             />
         );
     }
+
     const rating = data?.[0];
+
     return (
         <RatingCard
-            onAccept={onAccept}
             onCancel={onCancel}
+            onAccept={onAccept}
             rate={rating?.rate}
             className={className}
             title={t('Оцените статью')}
@@ -74,4 +79,5 @@ const ArticleRating = memo(({ className, articleId }: ArticleRatingProps) => {
         />
     );
 });
+
 export default ArticleRating;

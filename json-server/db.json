@@ -963,6 +963,18 @@
       "userId": "3",
       "text": "text",
       "id": "_sptnU3"
+    },
+    {
+      "articleId": "18",
+      "userId": "1",
+      "text": "коммент!",
+      "id": "3MUR4w9"
+    },
+    {
+      "articleId": "18",
+      "userId": "1",
+      "text": "Коммент2!",
+      "id": "Tyg5tIZ"
     }
   ],
   "users": [
@@ -980,7 +992,7 @@
         "isAppRedesigned": true
       },
       "jsonSettings": {
-        "theme": "app_dark_theme",
+        "theme": "app_light_theme",
         "isFirstVisit": true,
         "settingsPageHasBeenOpen": false,
         "isArticlesPageWasOpened": true
@@ -1147,6 +1159,19 @@
       "rate": 3,
       "feedback": "более менее",
       "id": "Afk_Vni"
+    },
+    {
+      "userId": "1",
+      "articleId": "v343mr7",
+      "rate": 4,
+      "feedback": "УАУУ!",
+      "id": "TBEYF5x"
+    },
+    {
+      "userId": "1",
+      "articleId": "18",
+      "rate": 4,
+      "id": "9tTuYFK"
     }
   ],
   "profile-ratings": [

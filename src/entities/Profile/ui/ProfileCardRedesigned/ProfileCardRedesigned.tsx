@@ -31,6 +31,7 @@ export const ProfileCardRedesignedError = () => {
 export const ProfileCardRedesignedSkeleton = () => (
     <Card
         padding="24"
+        border='partial'
         max
     >
         <VStack gap="32">

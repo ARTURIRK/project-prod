@@ -218,7 +218,7 @@ export const RatingCard = memo((props: RatingCardProps) => {
             on={
                 <Card
                     max
-                    border="round"
+                    border="partial"
                     padding="24"
                 >
                     {content}

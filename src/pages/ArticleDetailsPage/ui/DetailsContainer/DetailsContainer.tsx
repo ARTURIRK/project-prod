@@ -14,7 +14,7 @@ export const DetailsContainer = memo((props: DetailsContainterProps) => {
     return (
         <Card
             max
-            border="round"
+            border="partial"
             className={className}
             padding="24"
         >

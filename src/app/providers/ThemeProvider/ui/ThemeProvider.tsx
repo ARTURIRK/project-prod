@@ -1,5 +1,5 @@
 import { ReactNode, useEffect, useMemo, useState } from 'react';
-import { Theme } from '@/shared/const';
+import { Theme, LOCAL_STORAGE_THEME_KEY } from '@/shared/const';
 import { ThemeContext } from '@/shared/lib/contexts';
 import { useJsonSettings } from '@/entities/User';
 
@@ -7,6 +7,7 @@ interface ThemeProviderProps {
     initialTheme?: Theme;
     children: ReactNode;
 }
+const fallbackTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme;
 
 export default function ThemeProvider({
     initialTheme,
@@ -14,7 +15,7 @@ export default function ThemeProvider({
 }: ThemeProviderProps) {
     const { theme: defaultTheme } = useJsonSettings();
     const [theme, setTheme] = useState<Theme>(
-        initialTheme || defaultTheme || Theme.LIGHT,
+        initialTheme || fallbackTheme || Theme.LIGHT,
     );
     const [isThemeInited, setIsThemeInited] = useState(false);
     const defaultProps = useMemo(
@@ -33,6 +34,7 @@ export default function ThemeProvider({
 
     useEffect(() => {
         document.body.className = theme; // нужно для изменения стилей скролла
+        localStorage.setItem(LOCAL_STORAGE_THEME_KEY, theme);
     }, [theme]);
 
     return (

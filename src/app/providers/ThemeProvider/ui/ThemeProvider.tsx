@@ -30,6 +30,11 @@ export default function ThemeProvider({
             setIsThemeInited(true);
         }
     }, [isThemeInited, defaultTheme]);
+
+    useEffect(() => {
+        document.body.className = theme; // нужно для изменения стилей скролла
+    }, [theme]);
+
     return (
         <ThemeContext.Provider value={defaultProps}>
             {children}

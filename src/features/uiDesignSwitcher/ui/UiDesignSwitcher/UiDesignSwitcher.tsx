@@ -13,6 +13,7 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { getUserAuthData } from '@/entities/User';
 import { HStack } from '@/shared/ui/redesigned/Stack';
 import { Skeleton } from '@/shared/ui/redesigned/Skeleton';
+import { useForceUpdate } from '@/shared/lib/render/forceUpdate';
 
 interface UiDesignSwitcherProps {
     className?: string;
@@ -22,6 +23,7 @@ export const UiDesignSwitcher = memo((props: UiDesignSwitcherProps) => {
     const { className } = props;
     const { t } = useTranslation();
     const isAppRedesigned = getFeatureFlag('isAppRedesigned');
+    const forceUpdate = useForceUpdate();
     const dispatch = useAppDispatch();
     const authData = useSelector(getUserAuthData);
     const [isLoading, setIsLoading] = useState(false);
@@ -51,6 +53,7 @@ export const UiDesignSwitcher = memo((props: UiDesignSwitcherProps) => {
                 .unwrap()
                 .catch(() => {
                     setIsLoading(false);
+                    forceUpdate();
                 });
         }
     };

@@ -1,16 +1,16 @@
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { classNames } from '@/shared/lib/classNames/classNames';
 import { Profile, ProfileCard } from '@/entities/Profile';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { Text, TextTheme } from '@/shared/ui/deprecated/Text';
+import { VStack } from '@/shared/ui/redesigned/Stack';
 import {
     DynamicModuleLoader,
     type ReducersList,
 } from '@/shared/lib/components';
-import { VStack } from '@/shared/ui/redesigned/Stack';
 import { ValidateProfileError } from '../../model/consts/consts';
 import { getProfileInfo } from '../../model/selectors/getProfileInfo';
 import { profileActions, profileReducer } from '../../model/slice/profileSlice';
@@ -33,7 +33,7 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
         [ValidateProfileError.INCORRECT_USER_DATA]: t(
             'Не указаны имя или фамилия',
         ),
-        [ValidateProfileError.SERVER_ERROR]: t('Ошбика серера'),
+        [ValidateProfileError.SERVER_ERROR]: t('Ошибка серера'),
         [ValidateProfileError.INCORRECT_AGE]: t('Некорректно указан возраст'),
         [ValidateProfileError.INCORRECT_COUNTRY]: t(
             'Некорректно указана страна',

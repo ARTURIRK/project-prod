@@ -27,7 +27,7 @@ export const EditableProfileCardHeader = memo(
     (props: EditableProfileCardHeaderProps) => {
         const { className } = props;
 
-        const { t } = useTranslation('profile');
+        const { t } = useTranslation();
         const authData = useSelector(getUserAuthData);
         const profileData = useSelector(getProfileInfo);
         const dispatch = useAppDispatch();

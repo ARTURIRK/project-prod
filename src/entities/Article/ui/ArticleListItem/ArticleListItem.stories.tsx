@@ -1,6 +1,5 @@
-import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-
+import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 import { ArticleListItem } from './ArticleListItem';
 import type { Article } from '../../model/types/article';
 import { ArticleView } from '../../model/consts/consts';
@@ -97,6 +96,13 @@ Big.args = {
     view: ArticleView.BIG,
     article,
 };
+
+export const BigRedesigned = Template.bind({});
+BigRedesigned.args = {
+    view: ArticleView.BIG,
+    article,
+};
+BigRedesigned.decorators = [NewDesignDecorator];
 
 export const Small = Template.bind({});
 Small.args = {

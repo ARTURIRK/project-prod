@@ -10,21 +10,21 @@ import { Text } from '@/shared/ui/redesigned/Text';
 import { ListBox } from '@/shared/ui/redesigned/Popups';
 
 interface Props {
-    className?: string;
-    sort: ArticleSortField;
-    order: SortOrder;
     onChangeSort: (sort: ArticleSortField) => void;
     onChangeOrder: (order: SortOrder) => void;
+    sort: ArticleSortField;
+    className?: string;
+    order: SortOrder;
 }
 
 export function ArticleSortSelector({
-    className,
-    sort,
-    order,
-    onChangeSort,
     onChangeOrder,
+    onChangeSort,
+    className,
+    order,
+    sort,
 }: Props) {
-    const { t } = useTranslation();
+    const { t } = useTranslation('articles');
     const orderOptions: SelectOption<SortOrder>[] = [
         {
             value: 'asc',
@@ -61,16 +61,16 @@ export function ArticleSortSelector({
                     )}
                 >
                     <VStack gap="8">
-                        <Text text={t('Сортировать по:')} />
+                        <Text text={t('Сортировать по')} />
                         <ListBox<ArticleSortField>
                             items={sortFieldOptions}
-                            value={sort}
                             onChange={onChangeSort}
+                            value={sort}
                         />
                         <ListBox<SortOrder>
+                            onChange={onChangeOrder}
                             items={orderOptions}
                             value={order}
-                            onChange={onChangeOrder}
                         />
                     </VStack>
                 </div>
@@ -82,17 +82,17 @@ export function ArticleSortSelector({
                     ])}
                 >
                     <Select<ArticleSortField>
+                        label={t('Сортировать по')}
                         options={sortFieldOptions}
-                        label={t('Сортировать ПО')}
-                        value={sort}
                         onChange={onChangeSort}
+                        value={sort}
                     />
                     <Select
+                        onChange={onChangeOrder}
                         options={orderOptions}
+                        className={cls.order}
                         label={t('по')}
                         value={order}
-                        onChange={onChangeOrder}
-                        className={cls.order}
                     />
                 </div>
             }

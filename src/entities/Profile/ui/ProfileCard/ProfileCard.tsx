@@ -1,11 +1,6 @@
 import { memo } from 'react';
-import { ToggleFeatures } from '@/shared/lib/features';
 import { Profile } from '../../models/types/profile';
-import {
-    ProfileCardDeprecated,
-    ProfileCardDeprecatedError,
-    ProfileCardDeprecatedLoader,
-} from '../ProfileCardDeprecated/ProfileCardDeprecated';
+
 import {
     ProfileCardRedesigned,
     ProfileCardRedesignedError,
@@ -24,32 +19,16 @@ export interface ProfileCardProps {
     readonly?: boolean;
 }
 
-export const ProfileCard = memo(({ isLoading, error, ...props }: ProfileCardProps) => {
-    if (isLoading) {
-        return (
-            <ToggleFeatures
-                feature="isAppRedesigned"
-                on={<ProfileCardRedesignedSkeleton />}
-                off={<ProfileCardDeprecatedLoader />}
-            />
-        );
-    }
+export const ProfileCard = memo(
+    ({ isLoading, error, ...props }: ProfileCardProps) => {
+        if (isLoading) {
+            return <ProfileCardRedesignedSkeleton />;
+        }
 
-    if (error) {
-        return (
-            <ToggleFeatures
-                feature="isAppRedesigned"
-                on={<ProfileCardRedesignedError />}
-                off={<ProfileCardDeprecatedError />}
-            />
-        );
-    }
+        if (error) {
+            return <ProfileCardRedesignedError />;
+        }
 
-    return (
-        <ToggleFeatures
-            feature="isAppRedesigned"
-            on={<ProfileCardRedesigned {...props} />}
-            off={<ProfileCardDeprecated {...props} />}
-        />
-    );
-});
+        return <ProfileCardRedesigned {...props} />;
+    },
+);

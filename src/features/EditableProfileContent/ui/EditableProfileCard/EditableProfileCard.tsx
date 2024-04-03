@@ -5,7 +5,7 @@ import { Profile, ProfileCard } from '@/entities/Profile';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Text, TextTheme } from '@/shared/ui/deprecated/Text';
+import { Text } from '@/shared/ui/redesigned/Text';
 import { VStack } from '@/shared/ui/redesigned/Stack';
 import {
     DynamicModuleLoader,
@@ -72,7 +72,7 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
                     profile?.validateError.map((el) => (
                         <Text
                             key={el}
-                            theme={TextTheme.ERROR}
+                            variant="error"
                             text={validateErrorTranslations[el]}
                             data-testid="EditableProfileCard.Error"
                         />

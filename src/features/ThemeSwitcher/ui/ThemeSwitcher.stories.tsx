@@ -12,9 +12,7 @@ export default {
     },
 } as ComponentMeta<typeof ThemeSwitcher>;
 
-const Template: ComponentStory<typeof ThemeSwitcher> = (args) => (
-    <ThemeSwitcher {...args} />
-);
+const Template: ComponentStory<typeof ThemeSwitcher> = () => <ThemeSwitcher />;
 
 export const Normal = Template.bind({});
 Normal.args = {};

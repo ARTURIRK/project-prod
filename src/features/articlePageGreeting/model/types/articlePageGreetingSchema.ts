@@ -1,3 +1,1 @@
-export interface ArticlePageGreetingSchema {
-    
-}
+export interface ArticlePageGreetingSchema {}

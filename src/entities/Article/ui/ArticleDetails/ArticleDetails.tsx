@@ -7,19 +7,9 @@ import {
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import {
-    Text as TextDeprecated,
-    AlignText,
-    TextSize,
-} from '@/shared/ui/deprecated/Text';
 import { Text } from '@/shared/ui/redesigned/Text';
-import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton';
 import { Skeleton as SkeletonRedesigned } from '@/shared/ui/redesigned/Skeleton';
-import { Avatar } from '@/shared/ui/deprecated/Avatar';
-import EyeIcon from '@/shared/assets/icons/new-eye.svg';
-import CalendarIcon from '@/shared/assets/icons/calendar.svg';
-import { Icon } from '@/shared/ui/deprecated/Icon';
-import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
+import { VStack } from '@/shared/ui/redesigned/Stack';
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
 import { articleDetailsReducer } from '../../testing';
 import cls from './ArticleDetails.module.scss';
@@ -29,7 +19,6 @@ import {
     getArticleDetailsIsLoading,
 } from '../../model/selectors/articleDetails';
 import { renderArticleBlock } from './renderBlock';
-import { toggleFeatures, ToggleFeatures } from '@/shared/lib/features';
 import { AppImage } from '@/shared/ui/redesigned/AppImage';
 
 interface ArticleDetailsProps {
@@ -39,58 +28,6 @@ interface ArticleDetailsProps {
 
 const reducers: ReducersList = {
     articleDetails: articleDetailsReducer,
-};
-
-const Deprecated = () => {
-    const article = useSelector(getArticleDetailsData);
-    return (
-        <>
-            <HStack
-                justify="center"
-                max
-                className={cls.avatarWrapper}
-            >
-                <Avatar
-                    size={200}
-                    src={article?.img}
-                    className={cls.avatar}
-                />
-            </HStack>
-            <VStack
-                gap="4"
-                max
-                data-testid="ArticleDetails.Info"
-            >
-                <TextDeprecated
-                    className={cls.title}
-                    title={article?.title}
-                    text={article?.subtitle}
-                    size={TextSize.L}
-                />
-                <HStack
-                    gap="8"
-                    className={cls.articleInfo}
-                >
-                    <Icon
-                        className={cls.icon}
-                        Svg={EyeIcon}
-                    />
-                    <TextDeprecated text={String(article?.views)} />
-                </HStack>
-                <HStack
-                    gap="8"
-                    className={cls.articleInfo}
-                >
-                    <Icon
-                        className={cls.icon}
-                        Svg={CalendarIcon}
-                    />
-                    <TextDeprecated text={article?.createdAt} />
-                </HStack>
-            </VStack>
-            {article?.blocks.map(renderArticleBlock)}
-        </>
-    );
 };
 
 const Redesigned = () => {
@@ -121,11 +58,7 @@ const Redesigned = () => {
 };
 
 export const ArticleDetailsSkeleton = () => {
-    const Skeleton = toggleFeatures({
-        name: 'isAppRedesigned',
-        on: () => SkeletonRedesigned,
-        off: () => SkeletonDeprecated,
-    });
+    const Skeleton = SkeletonRedesigned;
     return (
         <VStack
             gap="16"
@@ -180,19 +113,13 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
         content = <ArticleDetailsSkeleton />;
     } else if (error) {
         content = (
-            <TextDeprecated
-                align={AlignText.CENTER}
+            <Text
+                align="center"
                 title={t('Произошла ошибка при загрузке статьи.')}
             />
         );
     } else {
-        content = (
-            <ToggleFeatures
-                feature="isAppRedesigned"
-                on={<Redesigned />}
-                off={<Deprecated />}
-            />
-        );
+        content = <Redesigned />;
     }
 
     return (

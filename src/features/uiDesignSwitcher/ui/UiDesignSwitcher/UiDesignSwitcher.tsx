@@ -2,13 +2,8 @@ import { useTranslation } from 'react-i18next';
 import { memo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { ListBox } from '@/shared/ui/redesigned/Popups';
-import { ListBox as ListBoxDeprecated } from '@/shared/ui/deprecated/Popups';
 import { Text } from '@/shared/ui/redesigned/Text';
-import {
-    ToggleFeatures,
-    getFeatureFlag,
-    updateFeatureFlag,
-} from '@/shared/lib/features';
+import { getFeatureFlag, updateFeatureFlag } from '@/shared/lib/features';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { getUserAuthData } from '@/entities/User';
 import { HStack } from '@/shared/ui/redesigned/Stack';
@@ -67,24 +62,11 @@ export const UiDesignSwitcher = memo((props: UiDesignSwitcherProps) => {
                     height={40}
                 />
             ) : (
-                <ToggleFeatures
-                    feature="isAppRedesigned"
-                    on={
-                        <ListBox
-                            onChange={onChange}
-                            items={items}
-                            value={isAppRedesigned ? 'new' : 'old'}
-                            className={className}
-                        />
-                    }
-                    off={
-                        <ListBoxDeprecated
-                            onChange={onChange}
-                            items={items}
-                            value={isAppRedesigned ? 'new' : 'old'}
-                            className={className}
-                        />
-                    }
+                <ListBox
+                    onChange={onChange}
+                    items={items}
+                    value={isAppRedesigned ? 'new' : 'old'}
+                    className={className}
                 />
             )}
         </HStack>

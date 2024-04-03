@@ -975,6 +975,18 @@
       "userId": "1",
       "text": "Коммент2!",
       "id": "Tyg5tIZ"
+    },
+    {
+      "articleId": "18",
+      "userId": "1",
+      "text": "комментик",
+      "id": "iD_e9C-"
+    },
+    {
+      "articleId": "7",
+      "userId": "1",
+      "text": "wer",
+      "id": "3SpkT7k"
     }
   ],
   "users": [
@@ -992,7 +1004,7 @@
         "isAppRedesigned": true
       },
       "jsonSettings": {
-        "theme": "app_dark_theme",
+        "theme": "app_light_theme",
         "isFirstVisit": true,
         "settingsPageHasBeenOpen": false,
         "isArticlesPageWasOpened": true

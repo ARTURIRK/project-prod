@@ -7,7 +7,7 @@ export const getArticlesPageLoading = (state: StateSchema) =>
 export const getArticlesPageError = (state: StateSchema) =>
     state.articlesPage?.error;
 export const getArticlesPageView = (state: StateSchema) =>
-    state.articlesPage?.view || ArticleView.SMALL;;
+    state.articlesPage?.view || ArticleView.SMALL;
 export const getArticlesPageLimit = (state: StateSchema) =>
     state.articlesPage?.limit ?? 9;
 export const getArticlesPageHasMore = (state: StateSchema) =>

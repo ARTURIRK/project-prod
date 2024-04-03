@@ -5,7 +5,6 @@ import { AnimationProvider, useAnimationLibs } from '@/shared/lib/components';
 import { Overlay } from '../Overlay';
 import cls from './Drawer.module.scss';
 import { Portal } from '../Portal';
-import { toggleFeatures } from '@/shared/lib/features';
 
 interface Props {
     className?: string;
@@ -82,11 +81,7 @@ export const DrawerContent = memo(
                         className,
                         theme,
                         'app_drawer',
-                        toggleFeatures({
-                            name: 'isAppRedesigned',
-                            on: () => cls.drawerNew,
-                            off: () => cls.drawerOld,
-                        }),
+                        cls.drawerNew,
                     ])}
                 >
                     <Overlay onClick={close} />

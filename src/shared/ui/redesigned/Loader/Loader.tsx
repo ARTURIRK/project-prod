@@ -2,14 +2,11 @@ import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import './Loader.scss';
 
-interface LoaderProps {
+interface Props {
     className?: string;
 }
-/**
- * Устарел, используем новые компоненты из папки redesigned
- * @deprecated
- */
-export const Loader = memo(({ className }: LoaderProps) => (
+
+export const Loader = memo(({ className }: Props) => (
     <div className={classNames('lds-ellipsis', {}, [className])}>
         <div />
         <div />

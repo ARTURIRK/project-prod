@@ -19,7 +19,7 @@ const alignClasses: Record<FlexAlign, string> = {
     start: cls.alignStart,
     center: cls.alignCenter,
     end: cls.alignEnd,
-    stretch: cls.stretch
+    stretch: cls.stretch,
 };
 
 const directionClasses: Record<FlexDirection, string> = {

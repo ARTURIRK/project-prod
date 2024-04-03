@@ -5,7 +5,6 @@ import { useModal } from '@/shared/lib/hooks/useModal';
 import { Portal } from '../Portal';
 import cls from './Modal.module.scss';
 import { Overlay } from '../Overlay';
-import { toggleFeatures } from '@/shared/lib/features';
 
 interface Props {
     className?: string;
@@ -47,11 +46,7 @@ export const Modal = ({
                     className,
                     theme,
                     'app_modal',
-                    toggleFeatures({
-                        name: 'isAppRedesigned',
-                        on: () => cls.modalNew,
-                        off: () => cls.modalOld,
-                    }),
+                    cls.modalNew,
                 ])}
             >
                 <Overlay onClick={close} />

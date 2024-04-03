@@ -3,14 +3,11 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { Loader } from '../Loader/Loader';
 import cls from './PageLoader.module.scss';
 
-interface PageLoaderProps {
+interface Props {
     className?: string;
 }
-/**
- * Устарел, используем новые компоненты из папки redesigned
- * @deprecated
- */
-export const PageLoader = memo(({ className }: PageLoaderProps) => (
+
+export const PageLoader = memo(({ className }: Props) => (
     <div className={classNames(cls.PageLoader, {}, [className])}>
         <Loader />
     </div>

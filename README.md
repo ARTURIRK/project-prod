@@ -47,7 +47,6 @@ npm run start:dev или npm run start:dev:vite - запуск сервера + 
 В проекте используется библиотека i18next для работы с переводами.
 Файлы с переводами хранятся в public/locales.
 
-
 Документация i18next - [https://react.i18next.com/](https://react.i18next.com/)
 
 ---
@@ -199,3 +198,8 @@ Clear.args = {
 -   [profileRating](/src/features/profileRating)
 -   [ThemeSwitcher](/src/features/ThemeSwitcher)
 -   [UI](/src/features/UI)
+
+
+## Примечания
+
+В проекте существует ветка `deprecated_design` в которой находится версия проекта с устаревшим дизайном и тоглом на переключение

@@ -134,7 +134,7 @@ files.forEach((sourceFile) => {
         ) {
             return replaceComponent(node);
         }
-        return null
+        return null;
     });
 });
 

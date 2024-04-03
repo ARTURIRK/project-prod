@@ -31,7 +31,7 @@ export const ProfileCardRedesignedError = () => {
 export const ProfileCardRedesignedSkeleton = () => (
     <Card
         padding="24"
-        border='partial'
+        border="partial"
         max
     >
         <VStack gap="32">
@@ -98,7 +98,7 @@ export const ProfileCardRedesigned = memo((props: ProfileCardProps) => {
     return (
         <Card
             padding="24"
-            border='partial'
+            border="partial"
             max
             className={className}
         >

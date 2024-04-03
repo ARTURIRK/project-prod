@@ -47,7 +47,10 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                 feature="isAppRedesigned"
                 on={
                     <header className={classNames(mainClass, {}, [className])}>
-                        <HStack gap="16" className={cls.actions}>
+                        <HStack
+                            gap="16"
+                            className={cls.actions}
+                        >
                             <NotificationButton />
                             <AvatarDropdown />
                         </HStack>
@@ -57,7 +60,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                     <header className={classNames(mainClass, {}, [className])}>
                         <Text
                             className={cls.appName}
-                            title={t('Ulbi TV App')}
+                            title={t('Artur App')}
                             theme={TextTheme.INVERTED}
                         />
                         <AppLink
@@ -67,7 +70,10 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                         >
                             {t('Создать статью')}
                         </AppLink>
-                        <HStack gap="16" className={cls.actions}>
+                        <HStack
+                            gap="16"
+                            className={cls.actions}
+                        >
                             <NotificationButton />
                             <AvatarDropdown />
                         </HStack>
@@ -102,9 +108,11 @@ export const Navbar = memo(({ className }: NavbarProps) => {
             />
 
             {isAuthModal && (
-                <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
+                <LoginModal
+                    isOpen={isAuthModal}
+                    onClose={onCloseModal}
+                />
             )}
         </header>
     );
 });
-

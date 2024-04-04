@@ -5,7 +5,6 @@ export {
     getRouteArticleCreate,
     getRouteArticleDetails,
     getRouteArticleEdit,
-    getRouteSettings,
     getRouteForbidden,
     getRouteArticles,
     getRouteMain,

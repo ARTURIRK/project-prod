@@ -8,20 +8,18 @@ import {
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { Text } from '@/shared/ui/redesigned/Text';
-import { Skeleton as SkeletonRedesigned } from '@/shared/ui/redesigned/Skeleton';
 import { VStack } from '@/shared/ui/redesigned/Stack';
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
 import { articleDetailsReducer } from '../../testing';
 import cls from './ArticleDetails.module.scss';
 import {
-    getArticleDetailsData,
     getArticleDetailsError,
     getArticleDetailsIsLoading,
 } from '../../model/selectors/articleDetails';
-import { renderArticleBlock } from './renderBlock';
-import { AppImage } from '@/shared/ui/redesigned/AppImage';
+import { ArticleDetailsSkeleton } from '../ArticleDetailsSkeleton/ArticleDetailsSkeleton';
+import ArticleContent from '../ArticleContent/ArticleContent';
 
-interface ArticleDetailsProps {
+interface Props {
     className?: string;
     id?: string;
 }
@@ -30,73 +28,8 @@ const reducers: ReducersList = {
     articleDetails: articleDetailsReducer,
 };
 
-const Redesigned = () => {
-    const article = useSelector(getArticleDetailsData);
-
-    return (
-        <>
-            <Text
-                title={article?.title}
-                size="l"
-                bold
-            />
-            <Text title={article?.subtitle} />
-            <AppImage
-                fallback={
-                    <SkeletonRedesigned
-                        width="100%"
-                        height={420}
-                        border="16px"
-                    />
-                }
-                src={article?.img}
-                className={cls.img}
-            />
-            {article?.blocks.map(renderArticleBlock)}
-        </>
-    );
-};
-
-export const ArticleDetailsSkeleton = () => {
-    const Skeleton = SkeletonRedesigned;
-    return (
-        <VStack
-            gap="16"
-            max
-        >
-            <Skeleton
-                className={cls.avatar}
-                width={200}
-                height={200}
-                border="50%"
-            />
-            <Skeleton
-                className={cls.title}
-                width={300}
-                height={32}
-            />
-            <Skeleton
-                className={cls.skeleton}
-                width={600}
-                height={24}
-            />
-            <Skeleton
-                className={cls.skeleton}
-                width="100%"
-                height={200}
-            />
-            <Skeleton
-                className={cls.skeleton}
-                width="100%"
-                height={200}
-            />
-        </VStack>
-    );
-};
-
-export const ArticleDetails = memo((props: ArticleDetailsProps) => {
-    const { className, id } = props;
-    const { t } = useTranslation();
+export const ArticleDetails = memo(({ className, id }: Props) => {
+    const { t } = useTranslation('article-details');
     const dispatch = useAppDispatch();
     const isLoading = useSelector(getArticleDetailsIsLoading);
     const error = useSelector(getArticleDetailsError);
@@ -119,7 +52,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
             />
         );
     } else {
-        content = <Redesigned />;
+        content = <ArticleContent />;
     }
 
     return (
